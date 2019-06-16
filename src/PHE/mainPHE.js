@@ -12,12 +12,19 @@ function initPHE(){
 	$("#footer").css("display", "none");
 
 	//gestion header
-	$("#navbarsExampleDefault ul").css("display", "none");
+	$("#navbarsExampleDefault ul li").css("display", "none");
 	$("#connexion").css("display", "none");
 	$("#deconnexion").css("display", "block");
 	$(".container #exampleModal .modal-body").text("Etes vous sur de vous déconnecter?");
-	//TODO rajouter le bouton créer liste dans le header
 
+	let createBtn = $("<li style='width: 92px;' class='nav-item active'><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#modalSerie'>Créer série</button></li>"),
+		obj = {id: "modalSerie", title: "test", content: "est ce que ça marche?"},
+		modal = createModal(obj);
+	$("#navbarsExampleDefault ul").append(createBtn).append(modal);
+
+	/*createBtn.on("click", (e) => {
+		creationSerie();
+	});*/
 	//gestion content
 	$("#main .jumbotron").css("display", "none");
 	liste = [
@@ -47,7 +54,7 @@ function initPHE(){
 
 function afficherSerie(listSerie){
 	$("#main #bloc").remove();
-	let mainDiv = $("<div id='block'>"),
+	let mainDiv = $("<div id='bloc'>"),
 		tabMatiere = [];
 
 	$("#main").append(mainDiv);
@@ -80,4 +87,33 @@ function afficherSerie(listSerie){
 		divSerie.append(titleSerie).append(btnSupr).append(btnModif);
 		$("ul." + serie.matiere).append(divSerie);
 	});
+}
+
+//TODO faire fonction création de série
+function creationSerie(){
+	$("#main #bloc").remove();
+	let mainDiv = $("<div id='bloc'>");
+
+	$("#main").append(mainDiv);
+}
+
+/**
+ *
+ * @param obj obj.id, obj.tilte, obj.content
+ * @return {jQuery|HTMLElement}
+ */
+function createModal(obj){
+	let modal = $("<div class='modal fade' id='" + obj.id + "' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'/>"),
+		modalPart1 = $("<div class='modal-dialog' role='document'/>"),
+		modalPart2 = $("<div class='modal-content'/>"),
+		modalHeader = $("<div class='modal-header'><h5 class='modal-title' id='ModalLabel'>" + obj.title + "</h5><button type='button' class='close' data-dismiss='modal' aria-label='Close'>\n" +
+			"          <span aria-hidden='true'>&times;</span></button></div>"),
+		modalContent = $("<div class='modal-body'>" + obj.content + "</div>"),
+		modalFooter = $("<div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button><button type='button' class='btn btn-primary'>OK</button></div>");
+
+	modalPart2.append(modalHeader).append(modalContent).append(modalFooter);
+	modalPart1.append(modalPart2)
+	modal.append(modalPart1);
+
+	return modal;
 }
