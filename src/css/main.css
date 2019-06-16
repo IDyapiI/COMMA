@@ -1,0 +1,27 @@
+/*css pour mettre en forme le header une fois connecter*/
+div.container{
+    max-width: none;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+.offset-md-1{
+    margin-left: 14%;
+}
+
+/*css de mise en forme de l'affichage des séries*/
+#main .menu{
+    width: 100%;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom-right-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+#main .liste{
+    margin-left: 5%;
+}
+
