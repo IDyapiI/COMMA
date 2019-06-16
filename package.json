@@ -1,0 +1,29 @@
+{
+  "name": "comma",
+  "version": "1.0.0",
+  "description": "comma backend in express linked with a mongoDB ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IDyapiI/COMMA.git"
+  },
+  "author": "COMMA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IDyapiI/COMMA/issues"
+  },
+  "homepage": "https://github.com/IDyapiI/COMMA#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect": "^3.7.0",
+    "express": "^4.17.1",
+    "generate-password": "^1.4.1",
+    "mongodb": "^3.2.7",
+    "mongoose": "^5.5.15"
+  }
+}
