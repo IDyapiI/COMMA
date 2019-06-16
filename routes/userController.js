@@ -13,7 +13,7 @@ function create(req, res) {
   user.status = req.body.status;
   user.save(err => {
     if (err) {
-      debug("Error during creating user: %s", err.message);
+      console.log("Error during creating user: %s", err.message);
       res.status(400).end();
     } else {
       res.json(user);
@@ -24,7 +24,7 @@ function create(req, res) {
 function readOne(req, res) {
   User.findOne({ _id: req.params.id }, (err, user) => {
     if (err) {
-      debug("finding problem: %s", err.message);
+      console.log("finding problem: %s", err.message);
       res.json({});
     } else {
       res.json(user);
@@ -35,7 +35,7 @@ function readOne(req, res) {
 function updateOne(req, res) {
   User.findById(req.params.id, (err, user) => {
     if (err) {
-      debug("Error during fetching users: %s", err.message);
+      console.log("Error during fetching users: %s", err.message);
       res.status(400).end();
     } else {
       user.firstname = req.body.firstname || user.firstname;
@@ -56,24 +56,25 @@ function updateOne(req, res) {
 }
 
 function login(req, res) {
-  User.findOneByEmail(req.body.email, (err, user) => {
+  User.find({email:req.body.email}, (err, user) => {
     if (err) {
-      debug(`Error finding user email at login: ${err}`);
+      console.log(`Error finding user email at login: ${err}`);
       res.status(400).end();
     } else if (!user) {
-      debug("No match email");
+      console.log("No match email");
       res.status(401).end();
     } else {
-      const hash = user.password;
+      const hash = user[0].password;
       const passwordFromFront = req.body.password;
       bcryptjs.compare(passwordFromFront, hash, (error, result) => {
         if (error) {
-          debug(`Error: ${error}`);
+          console.log(`Error: ${error}`);
           res.status(500).end();
         } else if (!result) {
-          debug("password don't match");
+          console.log("password don't match");
           res.status(401).end();
         } else {
+          user[0].password = undefined;
           res.json(user);
         }
       });
@@ -82,7 +83,8 @@ function login(req, res) {
 }
 
 function list(req, res) {
-  User.find(err, user => {
+  User.find({},(err, user) => {
+    console.log(user)
     if (err) {
       console.log(err);
     } else {

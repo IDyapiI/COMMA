@@ -11,7 +11,7 @@ function create(req, res) {
   serie.exercies = req.body.exercies;
   serie.save(err => {
     if (err) {
-      debug("Error during creating serie: %s", err.message);
+      console.log("Error during creating serie: %s", err.message);
       res.status(400).end();
     } else {
       res.json(serie);
@@ -22,7 +22,7 @@ function create(req, res) {
 function readOne(req, res) {
   Serie.findOne({ _id: req.params.id }, (err, serie) => {
     if (err) {
-      debug("finding problem: %s", err.message);
+      console.log("finding problem: %s", err.message);
       res.json({});
     } else {
       res.json(serie);
@@ -30,17 +30,10 @@ function readOne(req, res) {
   });
 }
 
-//  topic: String,
-//   name: String,
-//   level: String,
-//   description: String,
-//   groupeId: [mongoose.Types.ObjectId],
-//   creator:String,
-//   exercices: String,
 function updateOne(req, res) {
   Serie.findById(req.params.id, (err, serie) => {
     if (err) {
-      debug("Error during fetching series: %s", err.message);
+      console.log("Error during fetching series: %s", err.message);
       res.status(400).end();
     } else {
       serie.topic = req.body.topic || serie.topic;
@@ -64,7 +57,7 @@ function updateOne(req, res) {
 }
 
 function list(req, res) {
-  Serie.find(err, serie => {
+  Serie.find({},(err, serie) => {
     if (err) {
       console.log(err);
     } else {
