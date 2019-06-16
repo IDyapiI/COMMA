@@ -74,10 +74,10 @@ function afficherSerie(listSerie){
 
 		let divSerie = $("<li class='list-group-item' id='" + serie.id + "'>"),
 			titleSerie = $("<p class='title'>").text(serie.name),
-			btnSupr = $("<button type='button' class='button btn btn-warning'>").text("suppr"),
+			btnSupr = $("<button type='button' class='button btn btn-danger'>").text("suppr"),
 			btnModif = $("<button type='button' class='button btn btn-info'>").text("modif");
 
-		divSerie.append(titleSerie).append(btnModif).append(btnSupr);
+		divSerie.append(titleSerie).append(btnSupr).append(btnModif);
 		$("ul." + serie.matiere).append(divSerie);
 	});
 }
