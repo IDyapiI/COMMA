@@ -20,7 +20,6 @@ function initPHE(){
 
 	//gestion content
 	$("#main .jumbotron").css("display", "none");
-	//TODO visionner les séries
 	liste = [
 		{
 			name: "liste1",
@@ -61,6 +60,7 @@ function afficherSerie(listSerie){
 
 			divMat.append(titleMat);
 			mainDiv.append(divMat).append(listeSerie);
+
 			tabMatiere.push(serie.matiere);
 
 			divMat.on("click", (e) => {
@@ -72,8 +72,12 @@ function afficherSerie(listSerie){
 			})
 		}
 
-		let divSerie = $("<li class='list-group-item' id='" + serie.id + "'>");
-		divSerie.text(serie.name);
+		let divSerie = $("<li class='list-group-item' id='" + serie.id + "'>"),
+			titleSerie = $("<p class='title'>").text(serie.name),
+			btnSupr = $("<button type='button' class='button btn btn-warning'>").text("suppr"),
+			btnModif = $("<button type='button' class='button btn btn-info'>").text("modif");
+
+		divSerie.append(titleSerie).append(btnModif).append(btnSupr);
 		$("ul." + serie.matiere).append(divSerie);
 	});
 }

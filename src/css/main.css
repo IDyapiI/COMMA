@@ -25,3 +25,20 @@ div.container{
     margin-left: 5%;
 }
 
+#main .menu p{
+    margin-top: 12px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+#main .liste li p{
+    display: inline-block;
+    margin: 0px;
+    padding-top: 6px;
+}
+
+#main .liste li .button{
+    float: right;
+    margin-left: 20px;
+}
+
