@@ -27,11 +27,10 @@ function initPHE(){
 			title: "Création Série",
 			content: $("#navbarsExampleDefault ul"),
 			callbackValid: formulaire,
-			form: test()
-			// form: "est ce que ça marche?"
+			form: formCreateSerie()
 		};
 
-		function test(){
+		function formCreateSerie(){
 			let form = $("<form/>"),
 				partie1 = $("<div class='form-group'><label for='exampleInputNom'>Nom</label><input type='text' class='form-control' id='exampleInputNom' aria-describedby='nameHelp' placeholder='Enter name'><small id='nameHelp' class='form-text text-muted'>Le nom que porteras la série.</small></div>"),
 				partie2 = $("<div class='form-group'><label for='exampleInputSelect'>Matière</label><select class='form-control' id='exampleInputSelect'><option value=''Choisit une matière</option><option value='math'>math</option><option value='info'>info</option></select></div>");
@@ -43,15 +42,18 @@ function initPHE(){
 		createModal(obj);
 
 		function formulaire(){
-			console.log("valid");
+			let valName = $("input#exampleInputNom")[0].value,
+				valMat = $("select#exampleInputSelect")[0].value;
+
+			//TODO fonction à appeler après envoie des infos de la série
+			// creationSerie();
 		}
 	});
 
-	/*createBtn.on("click", (e) => {
-		creationSerie();
-	});*/
 	//gestion content
 	$("#main .jumbotron").css("display", "none");
+
+	//TODO appel au web service pour récupére les séries
 	liste = [
 		{
 			name: "liste1",
@@ -114,42 +116,10 @@ function afficherSerie(listSerie){
 	});
 }
 
-//TODO faire fonction création de série
+//TODO faire écran de création de série
 function creationSerie(){
 	$("#main #bloc").remove();
 	let mainDiv = $("<div id='bloc'>");
 
 	$("#main").append(mainDiv);
-}
-
-/**
- *
- * @param obj obj.id, obj.tilte, obj.content
- * @return {jQuery|HTMLElement}
- */
-function createModal(obj){
-	let modal = $("<div class='modal fade' id='" + obj.id + "' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'/>"),
-		modalPart1 = $("<div class='modal-dialog' role='document'/>"),
-		modalPart2 = $("<div class='modal-content'/>"),
-		modalHeader = $("<div class='modal-header'><h5 class='modal-title' id='ModalLabel'>" + obj.title + "</h5><button type='button' class='close' data-dismiss='modal' aria-label='Close'>\n" +
-			"          <span aria-hidden='true'>&times;</span></button></div>"),
-		modalContent = $("<div class='modal-body'/>"),
-		modalFooter = $("<div class='modal-footer'><button type='button' class='btn btn-secondary fermer' data-dismiss='modal'>Close</button><button type='button' class='btn btn-primary valid'>Submit</button></div>");
-
-	modalContent.append(obj.form);
-	modalPart2.append(modalHeader).append(modalContent).append(modalFooter);
-	modalPart1.append(modalPart2)
-	modal.append(modalPart1);
-	obj.content.append(modal);
-
-	$("button.fermer").on("click", (e) => {
-		$("div#" + obj.id).remove();
-		$("div.modal-backdrop.fade.show").remove();
-	});
-
-	$("button.valid").on("click", (e) => {
-		obj.callbackValid();
-		$("div#" + obj.id).remove();
-		$("div.modal-backdrop.fade.show").remove();
-	});
 }
