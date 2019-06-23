@@ -4,9 +4,20 @@ if(typeof proj === 'undefined')
 
 proj.PHE = {};
 
-initPHE();
+$.post(
+	"http://localhost/api/login",
+		{
+			email : "toto@gmail.com", // Nous supposons que ce formulaire existe dans le DOM.
+			password : "tata"
+		},
+		//TODO vérifé fonctionnement du web service
+		function(data, status){
+			initPHE(data);
+		},
+		'text'
+);
 
-function initPHE(){
+function initPHE(data){
 	//mise en forme de la page Home pour enseignant
 	//gestion footer
 	$("#footer").css("display", "none");
@@ -45,6 +56,10 @@ function initPHE(){
 			let valName = $("input#exampleInputNom")[0].value,
 				valMat = $("select#exampleInputSelect")[0].value;
 
+			$.ajax({
+				url : "http://localhost/api/series/", // La ressource ciblée
+				type : "POST" // Le type de la requête HTTP.
+			});
 			//TODO fonction à appeler après envoie des infos de la série
 			// creationSerie();
 		}
