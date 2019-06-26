@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 ////////DATABASE///////
 
-mongoose.connect("mongodb+srv://root:root@comma-x8fd4.mongodb.net/Comma?retryWrites=true&w=majority", error => {
+mongoose.connect("mongodb+srv://root:root@comma-uxg4x.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true }, error => {
   if (error) {
     console.error("Error during MongoDB connection:", error.message);
     process.exit(1);

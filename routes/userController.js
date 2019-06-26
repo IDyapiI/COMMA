@@ -4,7 +4,6 @@ const saltRounds = 10;
 const salt = bcryptjs.genSaltSync(saltRounds);
 
 function create(req, res) {
-  console.log(req.body);
   const user = new User();
   user.firstname = req.body.firstname;
   user.lastname = req.body.lastname;
@@ -16,7 +15,9 @@ function create(req, res) {
       debug("Error during creating user: %s", err.message);
       res.status(400).end();
     } else {
+      user.password = undefined;
       res.json(user);
+      res.status(200).end();
     }
   });
 }
@@ -28,6 +29,7 @@ function readOne(req, res) {
       res.json({});
     } else {
       res.json(user);
+      res.status(200).end();
     }
   });
 }
@@ -56,7 +58,7 @@ function updateOne(req, res) {
 }
 
 function login(req, res) {
-  User.findOneByEmail(req.body.email, (err, user) => {
+  User.find({email: req.body.email}, (err, user) => {
     if (err) {
       debug(`Error finding user email at login: ${err}`);
       res.status(400).end();
@@ -74,6 +76,7 @@ function login(req, res) {
           debug("password don't match");
           res.status(401).end();
         } else {
+          user.password = undefined;
           res.json(user);
         }
       });
