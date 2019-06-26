@@ -9,10 +9,12 @@ function initPHE(data){
 	//mise en forme de la page Home pour enseignant
 	//gestion footer
 	$("#footer").css("display", "none");
+	if (proj.user.status === "0")
+		$("#navbarsExampleDefault li.create").css("display", "none");
 
 	//TODO appel au web service pour récupére les séries
-
-	$.ajax({
+	//TODO V2 pas besoin si ramener par le login
+/*	$.ajax({
 		url : "http://localhost:3000/api/series/", // La ressource ciblée
 		type : "GET", // Le type de la requête HTTP.
 		success: function (data) {
@@ -22,9 +24,9 @@ function initPHE(data){
 			alert("impossible de récupérer les series");
 		}
 
-	});
+	});*/
 
-	liste = [
+	let liste = [
 		{
 			name: "liste1",
 			matiere: "math",
@@ -46,7 +48,7 @@ function initPHE(data){
 			id: 4
 		}
 	];
-	afficherSerie(liste);
+	afficherSerie(data.liste || liste);
 };
 
 function afficherSerie(listSerie){
@@ -110,17 +112,30 @@ function popupCreateSerie (){
 	createModal(obj);
 
 	function formulaire(){
-
-		var formData = new FormData($('#form_creationSerie')[0]);
+		let valName = $("#form_creationSerie #exampleInputNom")[0].value,
+		    valTopic = $("#form_creationSerie #exampleFormControlSelect1")[0].value,
+		    valLevel = $("#form_creationSerie #exampleFormControlSelect2")[0].value,
+		    valDescription = $("#form_creationSerie #exampleInputDescription")[0].value,
+			data = {
+				topic: valTopic,
+				name: valName,
+				level: valLevel,
+				description: valDescription,
+				creatorId: proj.user.id
+			}
 
 		$.ajax({
 			url : "http://localhost:3000/api/series/", // La ressource ciblée
-			type : "POST", // Le type de la requête HTTP.
-			data : formData
-
+			type : "POST",
+			contentType: "application/json",
+			data: JSON.stringify(data),
+			success: function (data) {
+				creationSerie(data);
+			},
+			error: function (e) {
+				alert("impossible de récupérer les series");
+			}
 		});
-		//TODO fonction à appeler après envoie des infos de la série
-		// creationSerie();
 	}
 }
 
