@@ -27,5 +27,11 @@ router
 router
   .route("/series/:id")
   .get(serie.readOne)
-  .put(serie.updateOne);
+  .put(serie.updateOne)
+  .delete(serie.deleteOne);
+
+router
+  .route("/series/groupId/:groupId")
+  .get(serie.readOne)
+
 module.exports = router;
