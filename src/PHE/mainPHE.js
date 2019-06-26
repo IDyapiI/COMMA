@@ -4,7 +4,7 @@ if(typeof proj === 'undefined')
 
 proj.PHE = {};
 
-$.post(
+/*$.post(
 	"http://localhost/api/login",
 		{
 			email : "toto@gmail.com", // Nous supposons que ce formulaire existe dans le DOM.
@@ -15,7 +15,8 @@ $.post(
 			initPHE(data);
 		},
 		'text'
-);
+);*/
+initPHE();
 
 function initPHE(data){
 	//mise en forme de la page Home pour enseignant
@@ -56,10 +57,10 @@ function initPHE(data){
 			let valName = $("input#exampleInputNom")[0].value,
 				valMat = $("select#exampleInputSelect")[0].value;
 
-			$.ajax({
+			/*$.ajax({
 				url : "http://localhost/api/series/", // La ressource ciblée
 				type : "POST" // Le type de la requête HTTP.
-			});
+			});*/
 			//TODO fonction à appeler après envoie des infos de la série
 			// creationSerie();
 		}
