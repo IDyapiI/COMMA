@@ -1,5 +1,6 @@
 const bcryptjs = require("bcryptjs");
 const User = require("../models/user");
+const Serie = require("../models/serie");
 const saltRounds = 10;
 const salt = bcryptjs.genSaltSync(saltRounds);
 
@@ -76,8 +77,16 @@ function login(req, res) {
           console.log("password don't match");
           res.status(401).end();
         } else {
-          user.password = undefined;
-          res.json(user);
+          Serie.find({creator: user._id}, (err, serie) =>{
+            if(err){
+              res.status(400).end();
+            }else{
+              user.password = undefined; 
+              user = user[0]
+              res.json({user,serie});
+              
+            }
+          })
         }
       });
     }
