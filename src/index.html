@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+        <meta name="author" content="Alexandre, Carole, Mael and Oussama">
+
+        <link href="../ressources/bootstrap-4.3.1-dist/css/bootstrap.css" rel="stylesheet">
+        <link href="../ressources/MESI-bootstrap/MESI-bootstrap.css" rel="stylesheet">
+
+        <title>Home Page</title>
+
+        <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+
+<header id="header">
+            <nav class="navbar navbar-expand-md navbar-dark">
+        <a class="navbar-brand" href="#">MESI</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle disabled" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cours</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Cours réalisés</a>
+                        <a class="dropdown-item" href="#">Cours en attente</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle disabled" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercices</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown02">
+                        <a class="dropdown-item" href="#">Exercices réalisés</a>
+                        <a class="dropdown-item" href="#">Exercices en attente</a>
+                    </div>
+                </li>
+            </ul>
+                        <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Connexion
+                        </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                    <form id="formulaire" method="POST" >
+                                        <div class="form-group">
+                                            <label></label>
+                                            <input type="email" class="form-control fadeIn first" autocomplete="current-email" placeholder="Email">
+
+                                            <label></label>
+                                            <input type="password" class="form-control fadeIn second" autocomplete="current-password" placeholder="Password">
+                                        </div>
+                                    </form>
+                                    <button type="submit" class="btn btn-primary fadeIn third" onclick="connexion()" data-dismiss="modal">Valider</button>
+                            </div>
+                            <div class="modal-footer">
+                                    <a class="underlineHover" href="includes/Professor/headerProf.html">Pas encore inscrit ?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div id="main">
+    <div id="bloc">
+
+            <img src="../ressources/home.png"
+                 alt="The head and torso of a dinosaur skeleton;
+                it has a large head with long sharp teeth"
+
+                 title="A T-Rex on display in the Manchester University Museum">
+    </div>
+
+</div>
+
+<footer id="footer" class="page-footer font-small">
+
+    <nav class="navbar navbar-expand-md navbar-dark">
+
+        <div class="row">
+            <div class="col-12 col-md">
+                <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Features</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Cool stuff</a></li>
+                    <li><a class="text-muted" href="#">Random feature</a></li>
+                    <li><a class="text-muted" href="#">Team feature</a></li>
+                    <li><a class="text-muted" href="#">Stuff for developers</a></li>
+
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Resource</a></li>
+                    <li><a class="text-muted" href="#">Resource name</a></li>
+                    <li><a class="text-muted" href="#">Another resource</a></li>
+                    <li><a class="text-muted" href="#">Final resource</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Team</a></li>
+                    <li><a class="text-muted" href="#">Locations</a></li>
+                    <li><a class="text-muted" href="#">Privacy</a></li>
+                    <li><a class="text-muted" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/lodash/4.10.0/lodash.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="../ressources/bootstrap-4.3.1-dist/js/bootstrap.js"></script>
+
+<script src="jquery-3.3.1.js"></script>
+<script src="login.js"></script>
+<script src="includes/Professor/mainPHE.js"></script>
+<script src="includes/Services/tools.js"></script>
+<!--<script src="includes/Services/tools.js"></script>-->
+
+        <script>
+        $("#formulaire").submit(function(e){ // On sélectionne le formulaire par son identifiant
+        e.preventDefault(); // Le navigateur ne peut pas envoyer le formulaire
+        var donnees = $(this).serialize(); // On créer une variable content le formulaire sérialisé
+        $.ajax({
+        //...
+        data : donnees
+        //...
+        });
+        });
+        </script>
+
+
+    </body>
+</html>
