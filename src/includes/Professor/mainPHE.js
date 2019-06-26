@@ -4,63 +4,11 @@ if(typeof proj === 'undefined')
 
 proj.PHE = {};
 
-// initPHE();
 
 function initPHE(data){
 	//mise en forme de la page Home pour enseignant
 	//gestion footer
 	$("#footer").css("display", "none");
-
-	//gestion header
-	$("#navbarsExampleDefault ul li").css("display", "none");
-	$("#connexion").css("display", "none");
-	$("#deconnexion").css("display", "block");
-	$(".container #exampleModal .modal-body").text("Etes vous sur de vous déconnecter?");
-
-	let createBtn = $("<li style='width: 92px;' class='nav-item active'><button type='button' class='btn btn-primary create' data-toggle='modal' data-target='#modalSerie'>Créer série</button></li>");
-
-	$("#navbarsExampleDefault ul").append(createBtn);
-
-	$("button.create").on("click", (e) =>{
-		let obj = {
-			id: "modalSerie",
-			title: "Création Série",
-			content: $("#navbarsExampleDefault ul"),
-			callbackValid: formulaire,
-			form: formCreateSerie()
-		};
-
-		function formCreateSerie(){
-			let form = $("<form id='form_creationSerie'/>"),
-				partie1 = $("<div class='form-group'><label for='exampleInputNom'>Nom</label><input type='text' class='form-control' id='exampleInputNom' aria-describedby='nameHelp' placeholder='Enter name'><small id='nameHelp' class='form-text text-muted'>Le nom que porteras la série.</small></div>"),
-				partie2 = $("<div class='form-group'><label for='exampleFormControlSelect1'>Selectionner une matiere</label><select class='form-control' id='exampleFormControlSelect1'><option>Mathématique</option><option>Anglais</option><option>Physique</option><option>Français</option></select></div>"),
-				partie3 = $("<div class='form-group'><label for='exampleFormControlSelect2'>Niveau</label><select class='form-control' id='exampleFormControlSelect2'><option>6eme</option><option>5eme</option><option>...</option></select></div>"),
-				partie4 = $("<div class='form-group'><label for='exampleInputDescription'>Description</label><input type='text' class='form-control' id='exampleInputDescription' aria-describedby='descHelp' placeholder='Descritpion'></div>");
-
-
-			form.append(partie1).append(partie2).append(partie3).append(partie4);
-			return form;
-		}
-
-		createModal(obj);
-
-		function formulaire(){
-
-			var formData = new FormData($('#form_creationSerie')[0]);
-
-			$.ajax({
-				url : "http://localhost/api/series/", // La ressource ciblée
-				type : "POST", // Le type de la requête HTTP.
-				data : formData
-
-			});
-			//TODO fonction à appeler après envoie des infos de la série
-			// creationSerie();
-		}
-	});
-
-	//gestion content
-	$("#main .jumbotron").css("display", "none");
 
 	//TODO appel au web service pour récupére les séries
 
@@ -136,6 +84,44 @@ function afficherSerie(listSerie){
 		divSerie.append(titleSerie).append(btnSupr).append(btnModif);
 		$("ul." + serie.matiere).append(divSerie);
 	});
+}
+
+function popupCreateSerie (){
+	let obj = {
+		id: "modalSerie",
+		title: "Création Série",
+		content: $("#navbarsExampleDefault ul"),
+		callbackValid: formulaire,
+		form: formCreateSerie()
+	};
+
+	function formCreateSerie(){
+		let form = $("<form id='form_creationSerie'/>"),
+			partie1 = $("<div class='form-group'><label for='exampleInputNom'>Nom</label><input type='text' class='form-control' id='exampleInputNom' aria-describedby='nameHelp' placeholder='Enter name'><small id='nameHelp' class='form-text text-muted'>Le nom que porteras la série.</small></div>"),
+			partie2 = $("<div class='form-group'><label for='exampleFormControlSelect1'>Selectionner une matiere</label><select class='form-control' id='exampleFormControlSelect1'><option>Mathématique</option><option>Anglais</option><option>Physique</option><option>Français</option></select></div>"),
+			partie3 = $("<div class='form-group'><label for='exampleFormControlSelect2'>Niveau</label><select class='form-control' id='exampleFormControlSelect2'><option>6eme</option><option>5eme</option><option>...</option></select></div>"),
+			partie4 = $("<div class='form-group'><label for='exampleInputDescription'>Description</label><input type='text' class='form-control' id='exampleInputDescription' aria-describedby='descHelp' placeholder='Descritpion'></div>");
+
+
+		form.append(partie1).append(partie2).append(partie3).append(partie4);
+		return form;
+	}
+
+	createModal(obj);
+
+	function formulaire(){
+
+		var formData = new FormData($('#form_creationSerie')[0]);
+
+		$.ajax({
+			url : "http://localhost/api/series/", // La ressource ciblée
+			type : "POST", // Le type de la requête HTTP.
+			data : formData
+
+		});
+		//TODO fonction à appeler après envoie des infos de la série
+		// creationSerie();
+	}
 }
 
 //TODO faire écran de création de série
