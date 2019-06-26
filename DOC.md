@@ -85,6 +85,5 @@ dans le body:
 
 
 ### Read One by groupId 
-
-/series/groupId/:groupId
+=> http://localhost:3000/api/series/groupId/:groupId
 
