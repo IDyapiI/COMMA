@@ -1,15 +1,23 @@
 function connexion(){
-	/*$.post(
-		"http://localhost:3000/api/login",
-			{
-				email : "toto@gmail.com", // Nous supposons que ce formulaire existe dans le DOM.
-				password : "tata"
-			},
-			//TODO vérifé fonctionnement du web service
-			function(data, status){
-				initPHE(data);
-			}
-	);*/
-	$('header').load('includes/Professor/headerProf.html');
-	initPHE();
+
+	let valEmail = $("#formulaireConnexion .email")[0].value,
+		valPassword = $("#formulaireConnexion .password")[0].value,
+		data = {
+			email: valEmail,
+			password: valPassword
+		};
+
+	$.ajax({
+		url: "http://localhost:3000/api/login", // La ressource ciblée
+		type: "POST",
+		contentType: "application/json",
+		data: JSON.stringify(data),
+		success: function (data) {
+			$('header').load('includes/Professor/headerProf.html');
+			initPHE(data);
+		},
+		error: function (e) {
+			alert("impossible de récupérer les series");
+		}
+	});
 }
