@@ -4,18 +4,6 @@ if(typeof proj === 'undefined')
 
 proj.PHE = {};
 
-/*$.post(
-	"http://localhost/api/login",
-		{
-			email : "toto@gmail.com", // Nous supposons que ce formulaire existe dans le DOM.
-			password : "tata"
-		},
-		//TODO vérifé fonctionnement du web service
-		function(data, status){
-			initPHE(data);
-		},
-		'text'
-);*/
 // initPHE();
 
 function initPHE(data){
@@ -43,24 +31,29 @@ function initPHE(data){
 		};
 
 		function formCreateSerie(){
-			let form = $("<form/>"),
+			let form = $("<form id='form_creationSerie'/>"),
 				partie1 = $("<div class='form-group'><label for='exampleInputNom'>Nom</label><input type='text' class='form-control' id='exampleInputNom' aria-describedby='nameHelp' placeholder='Enter name'><small id='nameHelp' class='form-text text-muted'>Le nom que porteras la série.</small></div>"),
-				partie2 = $("<div class='form-group'><label for='exampleInputSelect'>Matière</label><select class='form-control' id='exampleInputSelect'><option value=''Choisit une matière</option><option value='math'>math</option><option value='info'>info</option></select></div>");
+				partie2 = $("<div class='form-group'><label for='exampleFormControlSelect1'>Selectionner une matiere</label><select class='form-control' id='exampleFormControlSelect1'><option>Mathématique</option><option>Anglais</option><option>Physique</option><option>Français</option></select></div>"),
+				partie3 = $("<div class='form-group'><label for='exampleFormControlSelect2'>Niveau</label><select class='form-control' id='exampleFormControlSelect2'><option>6eme</option><option>5eme</option><option>...</option></select></div>"),
+				partie4 = $("<div class='form-group'><label for='exampleInputDescription'>Description</label><input type='text' class='form-control' id='exampleInputDescription' aria-describedby='descHelp' placeholder='Descritpion'></div>");
 
-			form.append(partie1).append(partie2);
+
+			form.append(partie1).append(partie2).append(partie3).append(partie4);
 			return form;
 		}
 
 		createModal(obj);
 
 		function formulaire(){
-			let valName = $("input#exampleInputNom")[0].value,
-				valMat = $("select#exampleInputSelect")[0].value;
 
-			/*$.ajax({
+			var formData = new FormData($('#form_creationSerie')[0]);
+
+			$.ajax({
 				url : "http://localhost/api/series/", // La ressource ciblée
-				type : "POST" // Le type de la requête HTTP.
-			});*/
+				type : "POST", // Le type de la requête HTTP.
+				data : formData
+
+			});
 			//TODO fonction à appeler après envoie des infos de la série
 			// creationSerie();
 		}
@@ -70,6 +63,19 @@ function initPHE(data){
 	$("#main .jumbotron").css("display", "none");
 
 	//TODO appel au web service pour récupére les séries
+
+	$.ajax({
+		url : "http://localhost/api/series/", // La ressource ciblée
+		type : "GET", // Le type de la requête HTTP.
+		success: function (data) {
+			var liste = data;
+		},
+		error: function () {
+			alert("impossible de récupérer les series");
+		}
+
+	});
+
 	liste = [
 		{
 			name: "liste1",
