@@ -1,27 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5">
-    <title>Home Page</title>
+        <meta name="author" content="Alexandre, Carole, Mael and Oussama">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/jumbotron/">
+        <link href="../ressources/bootstrap-4.3.1-dist/css/bootstrap.css" rel="stylesheet">
+        <link href="../ressources/MESI-bootstrap/MESI-bootstrap.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="./css/main.css">
-    <!-- Bootstrap core CSS -->
-    <link href="../ressources/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Home Page</title>
 
-    <!-- Custom styles for this template -->
-    <!--<link href="jumbotron.css" rel="stylesheet">-->
+        <link rel="stylesheet" href="./css/main.css">
 </head>
+
 <body>
 
 <header id="header">
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #3E46B3;">
+            <nav class="navbar navbar-expand-md navbar-dark">
         <a class="navbar-brand" href="#">MESI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,62 +27,52 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cours</a>
+                            <a class="nav-link dropdown-toggle disabled" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cours</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                         <a class="dropdown-item" href="#">Cours réalisés</a>
                         <a class="dropdown-item" href="#">Cours en attente</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercices</a>
+                            <a class="nav-link dropdown-toggle disabled" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercices</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown02">
                         <a class="dropdown-item" href="#">Exercices réalisés</a>
                         <a class="dropdown-item" href="#">Exercices en attente</a>
                     </div>
                 </li>
             </ul>
-            <!-- <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline my-2 my-sm-0" type="submit">Search</button>
-            </form> -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9">
-                    </div>
-                    <div class="col-md-1 offset-md-1 ">
+
+                    <button id="AJAX">Mise à jour</button>
+
                         <!-- Button trigger modal -->
-                        <button id="connexion" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Connexion
                         </button>
-
-                        <!-- evenement jquery pour afficher le bouton deconnexion quand on est connecté -->
-                        <button id="deconnexion" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;">
-                            Deconnexion
-                        </button>
-                    </div>
-                </div>
-
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                ...
+                                    <form id="formulaire" method="POST" >
+                                        <div class="form-group">
+                                            <label></label>
+                                            <input type="email" class="form-control fadeIn first" autocomplete="current-email" placeholder="Email">
+
+                                            <label></label>
+                                            <input type="password" class="form-control fadeIn second" autocomplete="current-password" placeholder="Password">
+                                        </div>
+                                    </form>
+                                    <button type="submit" class="btn btn-primary fadeIn third" data-dismiss="modal">Valider</button>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">OK</button>
-                            </div>
+                                    <a class="underlineHover" href="includes/Professor/header.html">Pas encore inscrit ?</a>
                         </div>
                     </div>
                 </div>
@@ -97,35 +81,24 @@
     </nav>
 </header>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
 <div id="main">
-    <div class="jumbotron">
-
-
-        test test
-
-
-    </div>
-
     <div id="bloc">
-        test<br>
-        test<br>
-        test<br>
-        test<br>
-        test<br>
-        test<br>
-        test<br>
+
+            <img src="../ressources/home.png"
+                 alt="The head and torso of a dinosaur skeleton;
+                it has a large head with long sharp teeth"
+
+                 title="A T-Rex on display in the Manchester University Museum">
     </div>
+
 </div>
 
+<footer id="footer" class="page-footer font-small">
 
-<footer id="footer" class="page-footer font-small blue">
-
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #3E46B3;">
+    <nav class="navbar navbar-expand-md navbar-dark">
 
         <div class="row">
             <div class="col-12 col-md">
-                <img class="mb-2" src="../../assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
                 <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
             </div>
             <div class="col-6 col-md">
@@ -165,8 +138,25 @@
 <script src="https://cdn.jsdelivr.net/lodash/4.10.0/lodash.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="../ressources/bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
-<script src="PHE/mainPHE.js"></script>
-<script src="PHE/tools.js"></script>
+<script src="../ressources/bootstrap-4.3.1-dist/js/bootstrap.js"></script>
+
+<script src="jquery.js"></script>
+<script src="login.js"></script>
+<script src="includes/Professor/mainPHE.js"></script>
+<script src="includes/Services/tools.js"></script>
+
+        <script>
+        $("#formulaire").submit(function(e){ // On sélectionne le formulaire par son identifiant
+        e.preventDefault(); // Le navigateur ne peut pas envoyer le formulaire
+        var donnees = $(this).serialize(); // On créer une variable content le formulaire sérialisé
+        $.ajax({
+        //...
+        data : donnees
+        //...
+        });
+        });
+        </script>
+
+
+    </body>
 </html>
