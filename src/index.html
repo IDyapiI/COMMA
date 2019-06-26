@@ -57,13 +57,13 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                    <form id="formulaire" method="POST" >
+                                    <form id="formulaireConnexion" method="POST" >
                                         <div class="form-group">
                                             <label></label>
-                                            <input type="email" class="form-control fadeIn first" autocomplete="current-email" placeholder="Email">
+                                            <input type="email" class="form-control fadeIn first email" autocomplete="current-email" placeholder="Email">
 
                                             <label></label>
-                                            <input type="password" class="form-control fadeIn second" autocomplete="current-password" placeholder="Password">
+                                            <input type="password" class="form-control fadeIn second password" autocomplete="current-password" placeholder="Password">
                                         </div>
                                     </form>
                                     <button type="submit" class="btn btn-primary fadeIn third" onclick="connexion()" data-dismiss="modal">Valider</button>
@@ -142,18 +142,6 @@
 <script src="includes/Professor/mainPHE.js"></script>
 <script src="includes/Services/tools.js"></script>
 <!--<script src="includes/Services/tools.js"></script>-->
-
-        <script>
-        $("#formulaire").submit(function(e){ // On sélectionne le formulaire par son identifiant
-        e.preventDefault(); // Le navigateur ne peut pas envoyer le formulaire
-        var donnees = $(this).serialize(); // On créer une variable content le formulaire sérialisé
-        $.ajax({
-        //...
-        data : donnees
-        //...
-        });
-        });
-        </script>
 
 
     </body>
