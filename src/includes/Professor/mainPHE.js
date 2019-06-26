@@ -13,7 +13,7 @@ function initPHE(data){
 	//TODO appel au web service pour récupére les séries
 
 	$.ajax({
-		url : "http://localhost/api/series/", // La ressource ciblée
+		url : "http://localhost:3000/api/series/", // La ressource ciblée
 		type : "GET", // Le type de la requête HTTP.
 		success: function (data) {
 			var liste = data;
@@ -114,7 +114,7 @@ function popupCreateSerie (){
 		var formData = new FormData($('#form_creationSerie')[0]);
 
 		$.ajax({
-			url : "http://localhost/api/series/", // La ressource ciblée
+			url : "http://localhost:3000/api/series/", // La ressource ciblée
 			type : "POST", // Le type de la requête HTTP.
 			data : formData
 

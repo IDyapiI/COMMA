@@ -1,6 +1,6 @@
 function connexion(){
 	/*$.post(
-		"http://localhost/api/login",
+		"http://localhost:3000/api/login",
 			{
 				email : "toto@gmail.com", // Nous supposons que ce formulaire existe dans le DOM.
 				password : "tata"
