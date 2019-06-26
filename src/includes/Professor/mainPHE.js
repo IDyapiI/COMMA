@@ -16,7 +16,7 @@ proj.PHE = {};
 		},
 		'text'
 );*/
-initPHE();
+// initPHE();
 
 function initPHE(data){
 	//mise en forme de la page Home pour enseignant
