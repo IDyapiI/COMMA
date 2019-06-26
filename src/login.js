@@ -1,5 +1,4 @@
-$(function() {
-	$('#AJAX').click(function() {
-		$('header').load('includes/Professor/headerProf.html');
-	});
-});
+function connexion(){
+	$('header').load('includes/Professor/headerProf.html');
+	initPHE();
+}
