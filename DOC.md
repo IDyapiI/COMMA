@@ -46,7 +46,7 @@ dans le body email, password
 
 
 ### Create (methode POST)
-=> http://localhost/api/users/
+=> http://localhost/api/series/
 
 dans le body:
 
