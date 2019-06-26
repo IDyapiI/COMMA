@@ -76,11 +76,7 @@ function login(req, res) {
           console.log("password don't match");
           res.status(401).end();
         } else {
-<<<<<<< HEAD
-          user[0].password = undefined;
-=======
           user.password = undefined;
->>>>>>> master
           res.json(user);
         }
       });
