@@ -11,6 +11,7 @@ function create(req, res) {
   user.email = req.body.email;
   user.password = bcryptjs.hashSync(req.body.password, salt);
   user.status = req.body.status;
+  user.groupId = req.body.groupId;
   user.save(err => {
     if (err) {
       console.log("Error during creating user: %s", err.message);
@@ -46,6 +47,7 @@ function updateOne(req, res) {
       user.email = req.body.email || user.email;
       user.password = req.body.password || user.password;
       user.status = req.body.status || user.status;
+      user.groupId = req.body.groupId || user.groupId;
       user.save(saveErr => {
         if (saveErr) {
           res.json("error durring update, error is: ", saveErr);

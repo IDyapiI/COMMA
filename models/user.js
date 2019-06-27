@@ -6,7 +6,7 @@ const usersSchema = new mongoose.Schema({
   email : String,
   password: String,
   status: String,
-  groupeId: mongoose.Types.ObjectId,
+  groupId: mongoose.Types.ObjectId,
 });
 
 const User = mongoose.model("User", usersSchema);
