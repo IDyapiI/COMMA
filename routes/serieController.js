@@ -82,7 +82,7 @@ function readByGroupId(req, res) {
 }
 
 function readByCreatorId(req, res) {
-  Serie.find({ creator: req.params.creatorId }, (err, serie) => {
+  Serie.find({creator: mongoose.Schema.Types.ObjectId(req.params.creatorId) }, (err, serie) => {
     if (err) {
       console.log("finding problem: %s", err.message);
       res.json({});
@@ -92,28 +92,17 @@ function readByCreatorId(req, res) {
     }
   });
 }
-function deleteOne(id) {
-  D.functions('Entering to deleteOne'); ""
-  Serie.findById(id, (err, serie) => {
+function deleteOne(req, res) {
+  Serie.deleteOne({ _id: req.params.id }, (err) => {
     if (err) {
-      res.json(err);
+      debug('Error during deleting Serie: %s', err.message);
       res.status(500).end();
-    } else if (serie) {
-      serie.remove((error) => {
-        if (error) {
-          res.json(err);
-          res.status(500).end();
-        } else {
-          res.json('deleted.');
-          res.status(200).end();
-        }
-      });
     } else {
-      res.json('user not found');
-      res.status(400).end();
+      res.status(200).end();
     }
   });
 }
+
 module.exports = {
   create,
   readOne,
