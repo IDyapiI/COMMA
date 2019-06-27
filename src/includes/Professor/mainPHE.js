@@ -4,93 +4,17 @@ if(typeof proj === 'undefined')
 
 proj.PHE = {};
 
-
-function initPHE(data){
-	//mise en forme de la page Home pour enseignant
-	//gestion footer
-	$("#footer").css("display", "none");
-	if (proj.user.status === "0")
-		$("#navbarsExampleDefault li.create").css("display", "none");
-
-	//TODO appel au web service pour récupére les séries
-	//TODO V2 pas besoin si ramener par le login
-	let liste = [
-		{
-			name: "liste1",
-			matiere: "math",
-			id: 1
+function supprSerie(data) {
+	$.ajax({
+		url : "http://localhost:3000/api/series/" + data.id, // La ressource ciblée
+		type : "DELETE",
+		success: function (data) {
+			initPHE(data);
 		},
-		{
-			name: "liste2",
-			matiere: "info",
-			id: 2
-		},
-		{
-			name: "liste3",
-			matiere: "math",
-			id: 3
-		},
-		{
-			name: "liste4",
-			matiere: "math",
-			id: 4
+		error: function (e) {
+			alert("impossible de récupérer les series");
 		}
-	];
-	afficherSerie(data.liste || liste);
-};
-
-function afficherSerie(listSerie){
-	$("#main #bloc").remove();
-	let mainDiv = $("<div id='bloc'>"),
-		tabMatiere = [];
-
-	$("#main").append(mainDiv);
-
-	_.forEach(listSerie, (serie) => {
-		if (_.findIndex(tabMatiere, function(o) { return o == serie.matiere; }) < 0){
-			let divMat = $("<div class='menu'>"),
-				titleMat = $("<p class='title'>").text(serie.matiere),
-				listeSerie = $("<ul class='liste list-group'>").addClass(serie.matiere);
-
-			divMat.append(titleMat);
-			mainDiv.append(divMat).append(listeSerie);
-
-			tabMatiere.push(serie.matiere);
-
-			divMat.on("click", (e) => {
-				let list = $("ul." + serie.matiere);
-				if(list.css("display") === "flex")
-					list.css("display", "none");
-				else
-					list.css("display", "flex");
-			})
-		}
-
-		let divSerie = $("<li class='list-group-item' id='" + serie.id + "'>"),
-			titleSerie = $("<p class='title'>").text(serie.name),
-			btnSupr = $("<button type='button' class='button btn btn-danger'>").text("suppr"),
-			btnModif = $("<button type='button' class='button btn btn-info'>").text("modif");
-
-		divSerie.append(titleSerie).append(btnSupr).append(btnModif);
-		$("ul." + serie.matiere).append(divSerie);
-
-		btnSupr.on("click", (e) => {
-			//supprSerie(serie);
-		});
 	});
-
-	function supprSerie(data) {
-		$.ajax({
-			url : "http://localhost:3000/api/series/" + data.id, // La ressource ciblée
-			type : "DELETE",
-			success: function (data) {
-				initPHE(data);
-			},
-			error: function (e) {
-				alert("impossible de récupérer les series");
-			}
-		});
-	}
 }
 
 function popupCreateSerie (){
