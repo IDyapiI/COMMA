@@ -73,7 +73,24 @@ function afficherSerie(listSerie){
 
 		divSerie.append(titleSerie).append(btnSupr).append(btnModif);
 		$("ul." + serie.matiere).append(divSerie);
+
+		btnSupr.on("click", (e) => {
+			//supprSerie(serie);
+		});
 	});
+
+	function supprSerie(data) {
+		$.ajax({
+			url : "http://localhost:3000/api/series/" + data.id, // La ressource ciblée
+			type : "DELETE",
+			success: function (data) {
+				initPHE(data);
+			},
+			error: function (e) {
+				alert("impossible de récupérer les series");
+			}
+		});
+	}
 }
 
 function popupCreateSerie (){
@@ -131,10 +148,6 @@ function popupCreateSerie (){
 function creationSerie(){
 	$("#main #bloc").remove();
 	let mainDiv = $("<div id='bloc'>");
-
 	$("#main").append(mainDiv);
-	if (proj.user.status !== "0")
-		mainDiv.load("includes/Student/readSeries.html");
-	else
-		mainDiv.load("includes/Professor/createSeries.html");
+	mainDiv.load("includes/Professor/createSeries.html");
 }
