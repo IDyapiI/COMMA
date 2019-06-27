@@ -24,7 +24,8 @@ function createModal(obj){
 	});
 
 	$("button.valid").on("click", (e) => {
-		obj.callbackValid();
+		if (obj.callbackValid)
+			obj.callbackValid();
 		$("div#" + obj.id).remove();
 		$("div.modal-backdrop.fade.show").remove();
 	});

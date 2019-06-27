@@ -192,8 +192,13 @@ function recupExo(){
 		question = $("input#ex3")[0].value;
 
 	if (repUn === "" || repDeux === "" || repTrois === "" || repQuatre === "" || question === "" ){
-		let obj;
-
+		let obj = {
+			id: "control",
+			title: "Erreur saisie",
+			content: $("#main"),
+			form: "Tout les champs non pas était remplit. Veuillez les complétez avant de passer à la question suivante."
+		};
+		createModal(obj);
 		return false;
 	}
 	return{
