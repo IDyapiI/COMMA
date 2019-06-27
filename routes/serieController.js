@@ -91,7 +91,7 @@ function readByCreatorId(req, res) {
   });
 }
 function deleteOne(id) {
-  D.functions('Entering to deleteOne');
+  D.functions('Entering to deleteOne');""
     Serie.findById(id, (err, serie) => {
       if (err) {
         res.json(err);
