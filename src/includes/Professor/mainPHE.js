@@ -1,9 +1,4 @@
 
-if(typeof proj === 'undefined')
-	proj = {};
-
-proj.PHE = {};
-
 function supprSerie(data) {
 	$.ajax({
 		url : "http://localhost:3000/api/series/" + data.id, // La ressource ciblée
@@ -59,6 +54,8 @@ function popupCreateSerie (){
 			contentType: "application/json",
 			data: JSON.stringify(data),
 			success: function (data) {
+				proj.serie = {};
+				proj.serie.id = data._id;
 				creationSerie(data);
 			},
 			error: function (e) {
@@ -68,7 +65,6 @@ function popupCreateSerie (){
 	}
 }
 
-//TODO faire écran de création de série
 function creationSerie(data){
 	$("#main #bloc").remove();
 	let mainDiv = $("<div id='bloc'>");
@@ -81,7 +77,7 @@ function exoSuivant(){
 }
 
 function terminerSerie(){
-
+	let data = recupExo();
 }
 
 function recupExo(){
@@ -94,6 +90,7 @@ function recupExo(){
 		kind: "QCM",
 		question:"yolo",
 		responseList : [repUn,repDeux,repTrois,repQuatre],
-		response: repUn
+		response: repUn,
+		serieId: proj.serie.id
 	}
 }
