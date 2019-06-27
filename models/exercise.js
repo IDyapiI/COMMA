@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-const exerciceSchema = new mongoose.Schema({
+const exerciseSchema = new mongoose.Schema({
   kind: String,
   question:String,
   responseList : [String],
   response:String,
 });
 
-const Exercise = mongoose.model("Exercise", exerciceSchema);
+const Exercise = mongoose.model("Exercise", exerciseSchema);
 
 module.exports = Exercise;

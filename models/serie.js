@@ -7,7 +7,7 @@ const seriesSchema = new mongoose.Schema({
   description: String,
   groupeId: [ObjectId],
   creator: String,
-  exercices: [String]
+  exercises: []
 });
 
 const Serie = mongoose.model("Serie", seriesSchema);
