@@ -71,7 +71,7 @@ function afficherSerie(listSerie){
 
 		let divSerie = $("<li class='list-group-item' id='" + serie._id + "'>"),
 			titleSerie = $("<p class='title'>").text(serie.name),
-			btnModif = $("<button type='button' class='button btn btn-info'>").text("modif");
+			btnModif = $("<button type='button' class='button btn btn-info'>").text(proj.user.status === "1" ? "modif" : "Commencer");
 
 		$("ul." + serie.topic).append(divSerie);
 		divSerie.append(titleSerie);
@@ -93,7 +93,11 @@ function afficherSerie(listSerie){
 					proj.serie.id = data._id;
 					proj.serie.exo = data.exercises || [];
 					proj.serie.actu = 0;
-					creationSerie(proj.serie.exo[proj.serie.actu]);
+					if (proj.user.status === "1"){
+						creationSerie(proj.serie.exo[proj.serie.actu]);
+					} else{
+
+					}
 				},
 				error: function (e) {
 					alert("impossible de récupérer la série");

@@ -35,9 +35,25 @@ function popupCreateSerie (){
 			partie1 = $("<div class='form-group'><label for='exampleInputNom'>Nom</label><input type='text' class='form-control' id='exampleInputNom' aria-describedby='nameHelp' placeholder='Enter name'><small id='nameHelp' class='form-text text-muted'>Le nom que porteras la série.</small></div>"),
 			partie2 = $("<div class='form-group'><label for='exampleFormControlSelect1'>Selectionner une matiere</label><select class='form-control' id='exampleFormControlSelect1'><option>Mathématique</option><option>Anglais</option><option>Physique</option><option>Français</option></select></div>"),
 			partie3 = $("<div class='form-group'><label for='exampleFormControlSelect2'>Niveau</label><select class='form-control' id='exampleFormControlSelect2'><option>6eme</option><option>5eme</option><option>...</option></select></div>"),
-			partie4 = $("<div class='form-group'><label for='exampleInputDescription'>Description</label><input type='text' class='form-control' id='exampleInputDescription' aria-describedby='descHelp' placeholder='Descritpion'></div>");
+			partie4 = $("<div class='form-group'><label for='exampleFormControlSelect3'>Groupe</label></div>");
+			partie5 = $("<select multiple class='form-control' id='exampleFormControlSelect3'></select>");
 
+		$.ajax({
+			url: "http://localhost:3000/api/groups/", // La ressource ciblée
+			type: "GET",
+			success: function (groups) {
+				_.forEach(groups, (group) => {
+					let option = $("<option id=" + group._id + ">" + group.name + "</option>");
 
+					partie5.append(option);
+				});
+			},
+			error: function (e) {
+				alert("impossible de récupérer de ce connecter");
+			}
+		});
+
+		partie4.append(partie5);
 		form.append(partie1).append(partie2).append(partie3).append(partie4);
 		return form;
 	}
@@ -48,14 +64,21 @@ function popupCreateSerie (){
 		let valName = $("#form_creationSerie #exampleInputNom")[0].value,
 			valTopic = $("#form_creationSerie #exampleFormControlSelect1")[0].value,
 			valLevel = $("#form_creationSerie #exampleFormControlSelect2")[0].value,
-			valDescription = $("#form_creationSerie #exampleInputDescription")[0].value,
+			optGroup = $("#form_creationSerie #exampleFormControlSelect3")[0].options,
 			data = {
 				topic: valTopic,
 				name: valName,
 				level: valLevel,
-				description: valDescription,
+				groupId: [],
 				creatorId: proj.user.id
 			};
+
+		for (let group of optGroup){
+			if (group.selected)
+				data.groupId.push(group.id);
+		}
+
+		$("#form_creationSerie #exampleFormControlSelect3")[0].options[0].selected
 
 		$.ajax({
 			url : "http://localhost:3000/api/series/", // La ressource ciblée
@@ -92,6 +115,8 @@ function creationSerie(data){
 function exoSuivant(){
 	let data = recupExo();
 
+	if (!data)
+		return;
 	if (_.get(proj, 'serie.exo') && _.get(proj, 'serie.actu') >= 0 && proj.serie.exo[proj.serie.actu]){
 		$.ajax({
 			url: "http://localhost:3000/api/exercises/" + proj.serie.exo[proj.serie.actu]._id, // La ressource ciblée
@@ -166,6 +191,11 @@ function recupExo(){
 		repQuatre = $("input#response4")[0].value,
 		question = $("input#ex3")[0].value;
 
+	if (repUn === "" || repDeux === "" || repTrois === "" || repQuatre === "" || question === "" ){
+		let obj;
+
+		return false;
+	}
 	return{
 		kind: "QCM",
 		question:question,
