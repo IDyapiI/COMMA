@@ -32,8 +32,11 @@ router
 
 router
   .route("/series/groupId/:groupId")
-  .get(serie.readOne)
+  .get(serie.readByGroupId)
 
+router
+  .route("/series/creatorId/:creatorId")
+  .get(serie.readByCreatorId)
   
 const result = require("./resultController");
 

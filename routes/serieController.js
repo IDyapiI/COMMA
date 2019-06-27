@@ -79,6 +79,17 @@ function readByGroupId(req, res) {
   });
 }
 
+function readByCreatorId(req, res) {
+  Serie.findOne({ creator: req.params.readByCreatorId }, (err, serie) => {
+    if (err) {
+      console.log("finding problem: %s", err.message);
+      res.json({});
+    } else {
+      res.json(serie);
+      res.status(200).end();
+    }
+  });
+}
 function deleteOne(id) {
   D.functions('Entering to deleteOne');
     Serie.findById(id, (err, serie) => {
@@ -107,5 +118,6 @@ module.exports = {
   updateOne,
   list,
   readByGroupId,
+  readByCreatorId,
   deleteOne,
 };
