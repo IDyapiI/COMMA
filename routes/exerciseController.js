@@ -73,20 +73,12 @@ function updateOne(req, res) {
 }
 
 function deleteOne(req, res) {
-  Exercise.findById(req.params.id, (err, exercise) => {
+  Exercise.deleteOne({ _id: req.params.id }, (err) => {
     if (err) {
-      debug("Error during fetching group: %s", err.message);
-      res.status(400).end();
+      debug('Error during deleting Serie: %s', err.message);
+      res.status(500).end();
     } else {
-      exercise.remove(saveErr => {
-        if (saveErr) {
-          res.json("error during delete, error is: ", saveErr);
-          res.status(500).end();
-        } else {
-          res.json(exercise);
-          res.status(200).end();
-        }
-      });
+      res.status(200).end();
     }
   });
 }
