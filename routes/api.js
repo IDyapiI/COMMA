@@ -56,7 +56,7 @@ router
     .get(group.list);
 
 router
-    .route("/goups/:id")
+    .route("/groups/:id")
     .put(group.updateOne)
     .get(group.readOne)
     .delete(group.deleteOne);
