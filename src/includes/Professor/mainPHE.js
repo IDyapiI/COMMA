@@ -77,9 +77,23 @@ function creationSerie(data){
 }
 
 function exoSuivant(){
-
+	let data = recupExo();
 }
 
 function terminerSerie(){
 
+}
+
+function recupExo(){
+	let repUn = $("input#response1")[0].value,
+		repDeux = $("input#response2")[0].value,
+		repTrois = $("input#response3")[0].value,
+		repQuatre = $("input#response4")[0].value;
+
+	return{
+		kind: "QCM",
+		question:"yolo",
+		responseList : [repUn,repDeux,repTrois,repQuatre],
+		response: repUn
+	}
 }
