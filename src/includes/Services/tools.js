@@ -9,7 +9,7 @@ function createModal(obj){
 		modalPart2 = $("<div class='modal-content'/>"),
 		modalHeader = $("<div class='modal-header'><h5 class='modal-title' id='ModalLabel'>" + obj.title + "</h5><button type='button' class='close' data-dismiss='modal' aria-label='Close'>\n" +
 			"          <span aria-hidden='true'>&times;</span></button></div>"),
-		modalContent = $("<div class='modal-body'/>"),s
+		modalContent = $("<div class='modal-body'/>"),
 		modalFooter = $("<div class='modal-footer'><button type='button' class='btn btn-secondary fermer' data-dismiss='modal'>Close</button><button type='button' class='btn btn-primary valid'>Submit</button></div>");
 
 	modalContent.append(obj.form);
@@ -24,7 +24,8 @@ function createModal(obj){
 	});
 
 	$("button.valid").on("click", (e) => {
-		obj.callbackValid();
+		if (obj.callbackValid)
+			obj.callbackValid();
 		$("div#" + obj.id).remove();
 		$("div.modal-backdrop.fade.show").remove();
 	});
