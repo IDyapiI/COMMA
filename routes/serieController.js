@@ -1,5 +1,5 @@
 const Serie = require("../models/serie");
-
+const Exercise = require("../models/exercise");
 function create(req, res) {
   const serie = new Serie();
   serie.topic = req.body.topic;
@@ -8,7 +8,7 @@ function create(req, res) {
   serie.description = req.body.description;
   serie.groupId = req.body.groupId;
   serie.creator = req.body.creator;
-  serie.exercies = req.body.exercies;
+  serie.exercise = req.body.exercises;
   serie.save(err => {
     if (err) {
       console.log("Error during creating serie: %s", err.message);
@@ -43,7 +43,7 @@ function updateOne(req, res) {
       serie.description = req.body.description || serie.description;
       serie.groupId = req.body.groupId || serie.groupId;
       serie.creator = req.body.creator || serie.creator;
-      serie.exercies = req.body.exercies || serie.exercies;
+      serie.exercise = req.body.exercise || serie.exercise;
       serie.save(saveErr => {
         if (saveErr) {
           res.json("error durring update, error is: ", saveErr);
@@ -57,7 +57,7 @@ function updateOne(req, res) {
 }
 
 function list(req, res) {
-  Serie.find({},(err, serie) => {
+  Serie.find({}, (err, serie) => {
     if (err) {
       console.log(err);
     } else {
@@ -91,26 +91,26 @@ function readByCreatorId(req, res) {
   });
 }
 function deleteOne(id) {
-  D.functions('Entering to deleteOne');""
-    Serie.findById(id, (err, serie) => {
-      if (err) {
-        res.json(err);
-        res.status(500).end();
-      } else if (serie) {
-        serie.remove((error) => {
-          if (error) {
-            res.json(err);
-            res.status(500).end();
-          } else {
-            res.json('deleted.');
-            res.status(200).end();
-          }
-        });
-      } else {
-        res.json('user not found');
-        res.status(400).end();
-      }
-    });
+  D.functions('Entering to deleteOne'); ""
+  Serie.findById(id, (err, serie) => {
+    if (err) {
+      res.json(err);
+      res.status(500).end();
+    } else if (serie) {
+      serie.remove((error) => {
+        if (error) {
+          res.json(err);
+          res.status(500).end();
+        } else {
+          res.json('deleted.');
+          res.status(200).end();
+        }
+      });
+    } else {
+      res.json('user not found');
+      res.status(400).end();
+    }
+  });
 }
 module.exports = {
   create,
