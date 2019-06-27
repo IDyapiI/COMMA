@@ -1,4 +1,5 @@
 const Exercise = require("../models/exercise");
+const Serie = require("../models/serie")
 
 function create(req, res) {
   console.log(req.body);
@@ -12,6 +13,14 @@ function create(req, res) {
       debug("Error during creating user: %s", err.message);
       res.status(400).end();
     } else {
+      Serie.find({_id: req.body.serieId},(err, serie)=>{
+        if(err){
+          debug(err)
+          res.status(400).end();
+        }else{
+          serie.exercices = exercise._id;
+        }
+      })
       res.json(exercise);
       res.status(200).end();
     }
@@ -57,7 +66,7 @@ function updateOne(req, res) {
 function deleteOne(req, res) {
   Exercise.findById(req.params.id, (err, exercise) => {
     if (err) {
-      debug("Error during fetching series: %s", err.message);
+      debug("Error during fetching group: %s", err.message);
       res.status(400).end();
     } else {
       exercise.remove(saveErr => {
