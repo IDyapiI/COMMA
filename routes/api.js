@@ -52,7 +52,8 @@ const group = require("./groupController");
 
 router
     .route("/groups/")
-    .post(group.create);
+    .post(group.create)
+    .get(group.list);
 
 router
     .route("/goups/:id")
