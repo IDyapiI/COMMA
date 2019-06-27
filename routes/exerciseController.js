@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const debug = require('debug')
 const Exercise = require("../models/exercise");
 const Serie = require("../models/serie")
@@ -49,24 +50,28 @@ function readOne(req, res) {
     }
   });
 }
-
 function updateOne(req, res) {
-  Serie.findOne(req.body.serieId, (err, exercise) => {
+  Serie.findById(req.body.serieId, (err, serie) => {
     if (err) {
-      debug("Error during fetching series: %s", err.message);
+      console.log("Error during fetching series: %s", err.message);
       res.status(400).end();
-    } else {
-      exercise.kind = req.body.kind || exercise.kind;
-      exercise.question = req.body.question || exercise.question;
-      exercise.responseList = req.body.responseList || exercise.responseList;
-      exercise.response = req.body.response || exercise.response;
-      exercise.save(saveErr => {
-        if (saveErr) {
-          res.json("error during update, error is: ", saveErr);
-          res.status(500).end();
-        } else {
-          updateSerie(req, res, exercise);
-        }
+    } else{  
+    serie.exercises.forEach(element => {
+      if (element._id == req.params.id) {
+        console.log('yes')
+        element.kind = req.body.kind || element.kind;
+        element.question = req.body.question || element.question;
+        element.responseList = req.body.responseList || element.responseList;
+        element.response = req.body.response || element.response;
+        serie.save(saveErr => {
+          if (saveErr) {
+            res.json("error durring update, error is: ", saveErr);
+            res.status(500).end();
+          } else {
+            res.json(serie);
+          }
+        });
+      }
       });
     }
   });
