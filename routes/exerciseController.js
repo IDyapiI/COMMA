@@ -1,8 +1,8 @@
+const debug = require('debug')
 const Exercise = require("../models/exercise");
 const Serie = require("../models/serie")
 
-function create(req, res) {
-  console.log(req.body);
+ function create(req, res) {
   const exercise = new Exercise();
   exercise.kind = req.body.kind;
   exercise.question = req.body.question;
@@ -10,23 +10,33 @@ function create(req, res) {
   exercise.response = req.body.response;
   exercise.save(err => {
     if(err) {
-      debug("Error during creating user: %s", err.message);
+      debug("Error during creating exercise: %s", err.message);
+      console.log(err);
       res.status(400).end();
     } else {
-      Serie.find({_id: req.body.serieId},(err, serie)=>{
-        if(err){
-          debug(err)
-          res.status(400).end();
-        }else{
-          serie.exercices = exercise._id;
-        }
-      })
-      res.json(exercise);
-      res.status(200).end();
+      updateSerie(req, res, exercise);
     }
   });
 }
 
+function updateSerie(req, res, exercise){
+  Serie.findById(req.body.serieId, (err, serie) => {
+    if (err) {
+      debug("Error during fetching series: %s", err.message);
+      res.status(400).end();
+    } else {
+      serie.exercises.push(exercise);
+      serie.save(saveErr => {
+        if (saveErr) {
+          res.json("error durring update, error is: ", saveErr);
+          res.status(500).end();
+        } else {
+          res.json({serie,exercise}).end();
+        }
+      });
+    }
+  });
+}
 function readOne(req, res) {
   Exercise.findOne({ _id: req.params.id }, (err, exercise) => {
     if (err) {
@@ -55,8 +65,7 @@ function updateOne(req, res) {
           res.json("error during update, error is: ", saveErr);
           res.status(500).end();
         } else {
-          res.json(exercise);
-          res.status(200).end();
+          updateSerie(req, res, exercise);
         }
       });
     }
