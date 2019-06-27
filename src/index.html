@@ -16,8 +16,7 @@
 
         <div style="background-image: url('../ressources/home.png'); height: 550px; width: 100%">
             <h1 style="font-family: 'Freestyle Script'; font-size: 60px; padding-top: 50px; padding-left: 200px; padding-right: 900px; text-align: justify">
-                Bienvenue sur Etudia, plateforme pédagogique de kalitey avec des exercices destinés aux eleves de college
-
+                Bienvenue sur Etudia, plateforme pédagogique permettant aux eleves de college un apprentissage personnalisé.
             </h1>
             <div style="padding-left: 200px">
                 <button type="button" class="btn btn-primary justify-content-md-center" data-toggle="modal" data-target="#exampleModal">
@@ -25,8 +24,6 @@
                 </button>
             </div>
         </div>
-        
-
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -61,7 +58,7 @@
 
     <div id="main">
         <div id="bloc">
-            <section class="page-section" id="services" style="background-color: #a7a7c5">
+            <section class="page-section" id="services" style="background-color: #eee5e3">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-center">
@@ -71,39 +68,47 @@
                     </div>
                     <div class="row text-center">
                         <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-          </span>
-                            <h4 class="service-heading">Convivialité</h4>
+                            <h4>Convivial</h4>
                             <p class="text-muted">Une plateforme intuitive permettant aux élèves et enseignant de travailler avec efficacité.</p>
                         </div>
+                        
                         <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-          </span>
-                            <h4 class="service-heading">Sécurité</h4>
-                            <p class="text-muted">Les élèves ont uniquement accès aux exercices créés par leur professeur.</p>
+                            <h4>Personnalisé</h4>
+                            <p class="text-muted">Un parcours sur mesure qui assure aux élèves uniquement les exercices créés par leur professeur. </p>
                         </div>
+                        
                         <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-          </span>
-                            <h4 class="service-heading">Web Security</h4>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                            <h4>Sécurisé</h4>
+                            <p class="text-muted">Les professeurs sont informés des résultats de leurs élèves et seulement eux.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="download text-center" id="download" style="background-color: #1e7e34; height: 300px">
-                <div class="container">
+            <section class="testimonials text-center bg-light">
+                <div class="container" style="padding-bottom: 30px">
+                    <h2 class="mb-5">Tout le monde en parle</h2>
                     <div class="row">
-                        <div class="col-md-8 mx-auto">
-                            <h1 class="section-heading">Discover what all the buzz is about!</h1>
-                            <p>Our app is available on any mobile device! Download now to get started!</p>
+                        <div class="col-lg-4">
+                            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                                <img class="img-fluid rounded-circle mb-3" src="img/testimonials-1.jpg" alt="">
+                                <h5>Margaret E.</h5>
+                                <p class="font-weight-light mb-0">" Mes élèves SEGPA paraissent vraiment plus intelligents "</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                                <img class="img-fluid rounded-circle mb-3" src="img/testimonials-2.jpg" alt="">
+                                <h5>Fred S.</h5>
+                                <p class="font-weight-light mb-0">" On va pas se le cacher, Etudia c'est quand même le turfu pour mes élèves "</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                                <img class="img-fluid rounded-circle mb-3" src="img/testimonials-3.jpg" alt="">
+                                <h5>Sarah W.</h5>
+                                <p class="font-weight-light mb-0">" Grâce à Etudia, j'ai retrouvé goût à la vie "</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -111,35 +116,16 @@
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; Etudia 2019. All Rights Reserved.</p>
-            <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a href="#">Privacy</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="#">Terms</a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="#">FAQ</a>
-                </li>
-            </ul>
-        </div>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/lodash/4.10.0/lodash.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="../ressources/bootstrap-4.3.1-dist/js/bootstrap.js"></script>
     
-
-
-<script src="https://cdn.jsdelivr.net/lodash/4.10.0/lodash.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="../ressources/bootstrap-4.3.1-dist/js/bootstrap.js"></script>
-
-<script src="jquery-3.3.1.js"></script>
-<script src="login.js"></script>
-<script src="includes/Professor/mainPHE.js"></script>
-<script src="includes/Services/tools.js"></script>
-<!--<script src="includes/Services/tools.js"></script>-->
+    <script src="jquery-3.3.1.js"></script>
+    <script src="login.js"></script>
+    <script src="includes/Professor/mainPHE.js"></script>
+    <script src="includes/Services/tools.js"></script>
+    <!--<script src="includes/Services/tools.js"></script>-->
 
 
     </body>
