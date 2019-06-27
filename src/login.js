@@ -22,7 +22,7 @@ function connexion(){
 			proj.user.id = data[0]._id;
 			proj.user.status = data[0].status;
 			$("header").load("includes/Professor/headerProf.html", () => {
-				initPHE(data);
+				initPH(data);
 			});
 		},
 		error: function (e) {
@@ -32,7 +32,7 @@ function connexion(){
 }
 
 
-function initPHE(data){
+function initPH(data){
 	//mise en forme de la page Home pour enseignant
 	//gestion footer
 	$("#footer").css("display", "none");
@@ -99,7 +99,7 @@ function afficherSerie(listSerie){
 
 		$("ul." + serie.matiere).append(divSerie);
 		divSerie.append(titleSerie);
-		if (proj.user.status === "0"){
+		if (proj.user.status !== "0"){
 			let btnSupr = $("<button type='button' class='button btn btn-danger'>").text("suppr");
 			divSerie.append(btnSupr);
 

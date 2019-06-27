@@ -51,7 +51,7 @@ function popupCreateSerie (){
 				level: valLevel,
 				description: valDescription,
 				creatorId: proj.user.id
-			}
+			};
 
 		$.ajax({
 			url : "http://localhost:3000/api/series/", // La ressource ciblée
@@ -63,15 +63,24 @@ function popupCreateSerie (){
 			},
 			error: function (e) {
 				alert("impossible de récupérer les series");
+				creationSerie();
 			}
 		});
 	}
 }
 
 //TODO faire écran de création de série
-function creationSerie(){
+function creationSerie(data){
 	$("#main #bloc").remove();
 	let mainDiv = $("<div id='bloc'>");
 	$("#main").append(mainDiv);
 	mainDiv.load("includes/Professor/createSeries.html");
+}
+
+function exoSuivant(){
+
+}
+
+function terminerSerie(){
+
 }
