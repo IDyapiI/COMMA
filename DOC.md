@@ -123,14 +123,14 @@ en param l'id de l'exercice à supprimer
 ## Groups
 
 
-### Create (méthode GET)
+### Create (méthode POST)
 => http://localhost:3000/api/groups/
 
 dans le body:
   * name
   * level
 
-### Read One (méthode POST)
+### Read One (méthode GET)
 => http://localhost:3000/api/groups/:id
 
 en param l'id du groupe à récupérer
@@ -151,7 +151,7 @@ en param l'id de l'exercice à supprimer
 
 ## RESULTS
 
-### Create (méthode GET)
+### Create (méthode POST)
 => http://localhost:3000/api/results/
 
 dans le body:
@@ -159,7 +159,7 @@ dans le body:
   * groupId
   * userId
 
-### Read One (méthode POST)
+### Read One (méthode GET)
 => http://localhost:3000/api/results/:id
 
 en param l'id du résultat à récupérer
