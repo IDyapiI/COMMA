@@ -1,10 +1,19 @@
 
-function supprSerie(data) {
+function supprSerie(id) {
 	$.ajax({
-		url : "http://localhost:3000/api/series/" + data.id, // La ressource ciblée
+		url : "http://localhost:3000/api/series/" + id, // La ressource ciblée
 		type : "DELETE",
 		success: function (data) {
-			initPH(data);
+			$.ajax({
+				url: "http://localhost:3000/api/series/creatorId/" + proj.user.id, // La ressource ciblée
+				type: "GET",
+				success: function (data) {
+					initPH({serie: data});
+				},
+				error: function (e) {
+					alert("impossible de récupérer de ce connecter");
+				}
+			});
 		},
 		error: function (e) {
 			alert("impossible de récupérer les series");
@@ -69,31 +78,61 @@ function creationSerie(data){
 	$("#main #bloc").remove();
 	let mainDiv = $("<div id='bloc'>");
 	$("#main").prepend(mainDiv);
-	mainDiv.load("includes/Professor/createSeries.html");
+	mainDiv.load("includes/Professor/createSeries.html", (e) => {
+		if(data){
+			$("input#response1")[0].value = data.response;
+			$("input#response2")[0].value = data.responseList[1];
+			$("input#response3")[0].value = data.responseList[2];
+			$("input#response4")[0].value = data.responseList[3];
+			$("input#ex3")[0].value = data.question;
+		}
+	});
 }
 
 function exoSuivant(){
 	let data = recupExo();
 
-	$.ajax({
-		url : "http://localhost:3000/api/exercises/", // La ressource ciblée
-		type : "POST",
-		contentType: "application/json",
-		data: JSON.stringify(data),
-		success: function (data) {
-			proj.serie.exoPreId = data._id;
-			let obj = {
-				text: "Exercice enregistrer",
-				content: $("#main"),
-				type: "success"
-			};
-			creationSerie();
-			createAlert(obj);
-		},
-		error: function (e) {
-			console.log("error");
-		}
-	});
+	if (_.get(proj, 'serie.exo') && _.get(proj, 'serie.actu') >= 0 && proj.serie.exo[proj.serie.actu]){
+		$.ajax({
+			url: "http://localhost:3000/api/exercises/" + proj.serie.exo[proj.serie.actu]._id, // La ressource ciblée
+			type: "PUT",
+			contentType: "application/json",
+			data: JSON.stringify(data),
+			success: function (data) {
+				let obj = {
+					text: "Exercice modifié",
+					content: $("#main"),
+					type: "success"
+				};
+				createAlert(obj);
+				proj.serie.actu++;
+				creationSerie(proj.serie.exo[proj.serie.actu]);
+			},
+			error: function (e) {
+				console.log("error");
+			}
+		});
+	}else {
+		$.ajax({
+			url: "http://localhost:3000/api/exercises/", // La ressource ciblée
+			type: "POST",
+			contentType: "application/json",
+			data: JSON.stringify(data),
+			success: function (data) {
+				proj.serie.exoPreId = data._id;
+				let obj = {
+					text: "Exercice enregistrer",
+					content: $("#main"),
+					type: "success"
+				};
+				createAlert(obj);
+				creationSerie();
+			},
+			error: function (e) {
+				console.log("error");
+			}
+		});
+	}
 }
 
 function terminerSerie(){
@@ -108,10 +147,10 @@ function terminerSerie(){
 
 	function finirSerie(){
 		$.ajax({
-			url: "http://localhost:3000/api/series/creatorId/:" + proj.user.id, // La ressource ciblée
-			type: "POST",
+			url: "http://localhost:3000/api/series/creatorId/" + proj.user.id, // La ressource ciblée
+			type: "GET",
 			success: function (data) {
-				initPH(data);
+				initPH({serie: data});
 			},
 			error: function (e) {
 				alert("impossible de récupérer de ce connecter");
@@ -124,11 +163,12 @@ function recupExo(){
 	let repUn = $("input#response1")[0].value,
 		repDeux = $("input#response2")[0].value,
 		repTrois = $("input#response3")[0].value,
-		repQuatre = $("input#response4")[0].value;
+		repQuatre = $("input#response4")[0].value,
+		question = $("input#ex3")[0].value;
 
 	return{
 		kind: "QCM",
-		question:"yolo",
+		question:question,
 		responseList : [repUn,repDeux,repTrois,repQuatre],
 		response: repUn,
 		serieId: proj.serie.id

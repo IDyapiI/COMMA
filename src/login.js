@@ -80,9 +80,25 @@ function afficherSerie(listSerie){
 			divSerie.append(btnSupr);
 
 			btnSupr.on("click", (e) => {
-				//supprSerie(serie);
+				supprSerie(serie._id);
 			});
 		}
 		divSerie.append(btnModif);
+		btnModif.on("click", (e) => {
+			$.ajax({
+				url: "http://localhost:3000/api/series/" + serie._id, // La ressource ciblée
+				type: "GET",
+				success: function (data) {
+					proj.serie = {};
+					proj.serie.id = data._id;
+					proj.serie.exo = data.exercises || [];
+					proj.serie.actu = 0;
+					creationSerie(proj.serie.exo[proj.serie.actu]);
+				},
+				error: function (e) {
+					alert("impossible de récupérer la série");
+				}
+			});
+		});
 	});
 }
