@@ -5,8 +5,8 @@ const seriesSchema = new mongoose.Schema({
   name: String,
   level: String,
   description: String,
-  groupeId: [ObjectId],
-  creator: String,
+  groupId: [ObjectId],
+  creator: ObjectId,
   exercises: []
 });
 

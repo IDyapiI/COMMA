@@ -1,5 +1,7 @@
+const mongoose = require("mongoose")
 const Serie = require("../models/serie");
 const Exercise = require("../models/exercise");
+
 function create(req, res) {
   const serie = new Serie();
   serie.topic = req.body.topic;
@@ -80,7 +82,7 @@ function readByGroupId(req, res) {
 }
 
 function readByCreatorId(req, res) {
-  Serie.findOne({ creator: req.params.creatorId }, (err, serie) => {
+  Serie.findOne({ creator: mongoose.Schema.Types.ObjectId(req.params.creatorId) }, (err, serie) => {
     if (err) {
       console.log("finding problem: %s", err.message);
       res.json({});
