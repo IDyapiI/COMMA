@@ -55,9 +55,29 @@ function list(req, res) {
     }
   });
 }
+
+function deleteOne(req, res) {
+  Group.findById(req.params.id, (err, group) => {
+    if (err) {
+      debug("Error during fetching group: %s", err.message);
+      res.status(400).end();
+    } else {
+      group.remove(saveErr => {
+        if (saveErr) {
+          res.json("error during delete, error is: ", saveErr);
+          res.status(500).end();
+        } else {
+          res.json(group);
+          res.status(200).end();
+        }
+      });
+    }
+  });
+}
 module.exports = {
   create,
   readOne,
   updateOne,
-  list
+  list,
+  deleteOne
 };
