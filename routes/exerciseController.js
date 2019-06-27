@@ -51,7 +51,7 @@ function readOne(req, res) {
 }
 
 function updateOne(req, res) {
-  Exercise.findById(req.params.id, (err, exercise) => {
+  Serie.findOne(req.body.serieId, (err, exercise) => {
     if (err) {
       debug("Error during fetching series: %s", err.message);
       res.status(400).end();
