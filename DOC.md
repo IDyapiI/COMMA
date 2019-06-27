@@ -146,7 +146,7 @@ dans le body:
 ### Delete One (méthode DELETE)
 => http://localhost:3000/api/groups/:id
 
-en param l'id de l'exercice à supprimer
+en param l'id du groupe à supprimer
 
 
 ## RESULTS
