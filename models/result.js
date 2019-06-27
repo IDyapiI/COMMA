@@ -1,13 +1,9 @@
 const mongoose = require("mongoose");
 
 const resultSchema = new mongoose.Schema({
-  topic: String,
-  name: String,
-  level: String,
-  description: String,
-  groupeId: [mongoose.Types.ObjectId],
-  creator: String,
-  exercices: String
+  groupId: [ObjectId],
+  userId: [ObjectId],
+  grade: String,
 });
 
 const Result = mongoose.model("Result", resultSchema);

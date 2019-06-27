@@ -34,4 +34,40 @@ router
   .route("/series/groupId/:groupId")
   .get(serie.readOne)
 
+  
+const result = require("./resultController");
+
+router
+    .route("/results/")
+    .post(result.create);
+router
+    .route("/results/:id")
+    .get(result.readOne)
+  .put(result.updateOne);
+
+const group = require("./groupController");
+
+router
+    .route("/groups/")
+    .post(group.create);
+
+router
+    .route("/goups/:id")
+    .put(group.updateOne)
+    .get(group.readOne)
+    .delete(group.deleteOne);
+
+
+const exercise = require("./exerciseController");
+
+router
+    .route("/exercises/")
+    .post(exercise.create);
+
+router
+    .route("/exercices/:id")
+    .put(exercise.updateOne)
+    .get(exercise.readOne)
+    .delete(exercise.deleteOne);
+
 module.exports = router;
