@@ -56,7 +56,7 @@ function popupCreateSerie (){
 			success: function (data) {
 				proj.serie = {};
 				proj.serie.id = data._id;
-				creationSerie(data);
+				creationSerie();
 			},
 			error: function (e) {
 				alert("impossible de récupérer les series");
@@ -68,16 +68,56 @@ function popupCreateSerie (){
 function creationSerie(data){
 	$("#main #bloc").remove();
 	let mainDiv = $("<div id='bloc'>");
-	$("#main").append(mainDiv);
+	$("#main").prepend(mainDiv);
 	mainDiv.load("includes/Professor/createSeries.html");
 }
 
 function exoSuivant(){
 	let data = recupExo();
+
+	$.ajax({
+		url : "http://localhost:3000/api/exercises/", // La ressource ciblée
+		type : "POST",
+		contentType: "application/json",
+		data: JSON.stringify(data),
+		success: function (data) {
+			proj.serie.exoPreId = data._id;
+			let obj = {
+				text: "Exercice enregistrer",
+				content: $("#main"),
+				type: "success"
+			};
+			creationSerie();
+			createAlert(obj);
+		},
+		error: function (e) {
+			console.log("error");
+		}
+	});
 }
 
 function terminerSerie(){
-	let data = recupExo();
+	let obj = {
+		id: "confirmation",
+		title: "Terminer série",
+		content: $("#main"),
+		callbackValid: finirSerie,
+		form: "Etes vous sure de vouloir terminer? L'exercice en cour de saisie ne sera pas enregistrer."
+	};
+	createModal(obj);
+
+	function finirSerie(){
+		$.ajax({
+			url: "http://localhost:3000/api/series/creatorId/:" + proj.user.id, // La ressource ciblée
+			type: "POST",
+			success: function (data) {
+				initPH(data);
+			},
+			error: function (e) {
+				alert("impossible de récupérer de ce connecter");
+			}
+		});
+	}
 }
 
 function recupExo(){
