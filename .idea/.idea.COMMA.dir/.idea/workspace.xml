@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a97194b-3410-4a9c-b414-ef120392fe4f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/createSeries.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/includes/Professor/headerProf.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/includes/Professor/headerProf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.COMMA.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.COMMA.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/includes/Professor/createSeries.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/includes/Professor/createSeries.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/includes/Student/readSeries.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/includes/Student/readSeries.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,22 +12,63 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="70" column="75" selection-start-line="70" selection-start-column="75" selection-end-line="70" selection-end-column="75" />
+            <state relative-caret-position="-135">
+              <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
               <folding>
-                <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#nav#0;n#header#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#3010#3017#1" expanded="true" />
+                <element signature="e#4885#4891#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ressources/MESI-bootstrap/MESI-bootstrap.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/includes/Professor/createSeries.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/includes/Student/readSeries.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/includes/Professor/headerProf.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -80,13 +121,14 @@
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="2420" />
-    <option name="height" value="1333" />
+    <option name="height" value="1334" />
   </component>
   <component name="ProjectView">
     <navigator currentView="FileSystemExplorer" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AssemblyExplorer" />
       <pane id="FileSystemExplorer">
         <subPane>
           <expand>
@@ -97,7 +139,7 @@
             <path>
               <item name="" type="161ac34:FileSystemExplorerRootNode" />
               <item name="COMMA" type="34e6ba20:FileSystemExplorerNode" />
-              <item name="service" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="ressources" type="34e6ba20:FileSystemExplorerNode" />
             </path>
             <path>
               <item name="" type="161ac34:FileSystemExplorerRootNode" />
@@ -109,19 +151,11 @@
               <item name="COMMA" type="34e6ba20:FileSystemExplorerNode" />
               <item name="src" type="34e6ba20:FileSystemExplorerNode" />
               <item name="includes" type="34e6ba20:FileSystemExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="161ac34:FileSystemExplorerRootNode" />
-              <item name="COMMA" type="34e6ba20:FileSystemExplorerNode" />
-              <item name="src" type="34e6ba20:FileSystemExplorerNode" />
-              <item name="includes" type="34e6ba20:FileSystemExplorerNode" />
-              <item name="Professor" type="34e6ba20:FileSystemExplorerNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AssemblyExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -161,7 +195,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51008000" />
+    <option name="totallyTimeSpent" value="51207000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -174,9 +208,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22132796" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22468142" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -190,16 +223,16 @@
       <window_info anchor="bottom" id="NuGet" order="7" />
       <window_info anchor="bottom" id="Performance Profiler" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.42661035" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="10" visible="true" weight="0.4260274" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Unit Tests" order="12" weight="0.32876712" />
-      <window_info anchor="bottom" id="Terminal" order="13" visible="true" weight="0.3041096" />
+      <window_info anchor="bottom" id="Terminal" order="13" weight="0.3041096" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Errors In Solution" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32997987" />
       <window_info anchor="right" id="Unit Tests Coverage" order="5" weight="0.32978156" />
     </layout>
   </component>
@@ -285,30 +318,9 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/includes/NotLoggedIn/modal.js" />
-    <entry file="file://$PROJECT_DIR$/src/includes/Professor/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="42" column="30" lean-forward="true" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143340">
-          <caret line="9571" column="22" selection-start-line="9571" selection-start-column="22" selection-end-line="9571" selection-end-column="22" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/includes/NotLoggedIn/modal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/includes/Professor/header.html" />
+    <entry file="file://$PROJECT_DIR$/src/jquery.js" />
+    <entry file="file://$PROJECT_DIR$/src/includes/NotLoggedIn/modal.html" />
     <entry file="file://$PROJECT_DIR$/ressources/bootstrap-4.3.1-dist/js/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -324,8 +336,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ressources/MESI-bootstrap/MESI-bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="88">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -345,25 +357,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/includes/Professor/createSeries.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        <state relative-caret-position="330">
+          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/createSeries.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="36" column="39" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/createSeries.html" />
     <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="70" column="75" selection-start-line="70" selection-start-column="75" selection-end-line="70" selection-end-column="75" />
+        <state relative-caret-position="-135">
+          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
           <folding>
-            <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#nav#0;n#header#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#3010#3017#1" expanded="true" />
+            <element signature="e#4885#4891#0" expanded="true" />
           </folding>
         </state>
       </provider>
