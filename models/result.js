@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const ObjectId = mongoose.Schema.Types.ObjectId;
 const resultSchema = new mongoose.Schema({
   groupId: [ObjectId],
   userId: [ObjectId],
