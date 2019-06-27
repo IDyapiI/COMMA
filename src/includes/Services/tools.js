@@ -29,3 +29,17 @@ function createModal(obj){
 		$("div.modal-backdrop.fade.show").remove();
 	});
 }
+
+function createAlert(obj){
+	let alert = $("<div class='alert' role='alert' style='margin: 20px;'>" + obj.text + "</div>");
+	switch(obj.type){
+		case "success":
+			alert.addClass("alert-success");
+			break;
+	}
+
+	obj.content.append(alert);
+	alert.on("click", function(e){
+		this.remove();
+	})
+}

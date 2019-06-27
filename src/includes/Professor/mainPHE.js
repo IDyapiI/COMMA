@@ -1,9 +1,4 @@
 
-if(typeof proj === 'undefined')
-	proj = {};
-
-proj.PHE = {};
-
 function supprSerie(data) {
 	$.ajax({
 		url : "http://localhost:3000/api/series/" + data.id, // La ressource ciblée
@@ -59,7 +54,9 @@ function popupCreateSerie (){
 			contentType: "application/json",
 			data: JSON.stringify(data),
 			success: function (data) {
-				creationSerie(data);
+				proj.serie = {};
+				proj.serie.id = data._id;
+				creationSerie();
 			},
 			error: function (e) {
 				alert("impossible de récupérer les series");
@@ -68,18 +65,72 @@ function popupCreateSerie (){
 	}
 }
 
-//TODO faire écran de création de série
 function creationSerie(data){
 	$("#main #bloc").remove();
 	let mainDiv = $("<div id='bloc'>");
-	$("#main").append(mainDiv);
+	$("#main").prepend(mainDiv);
 	mainDiv.load("includes/Professor/createSeries.html");
 }
 
 function exoSuivant(){
+	let data = recupExo();
 
+	$.ajax({
+		url : "http://localhost:3000/api/exercises/", // La ressource ciblée
+		type : "POST",
+		contentType: "application/json",
+		data: JSON.stringify(data),
+		success: function (data) {
+			proj.serie.exoPreId = data._id;
+			let obj = {
+				text: "Exercice enregistrer",
+				content: $("#main"),
+				type: "success"
+			};
+			creationSerie();
+			createAlert(obj);
+		},
+		error: function (e) {
+			console.log("error");
+		}
+	});
 }
 
 function terminerSerie(){
+	let obj = {
+		id: "confirmation",
+		title: "Terminer série",
+		content: $("#main"),
+		callbackValid: finirSerie,
+		form: "Etes vous sure de vouloir terminer? L'exercice en cour de saisie ne sera pas enregistrer."
+	};
+	createModal(obj);
 
+	function finirSerie(){
+		$.ajax({
+			url: "http://localhost:3000/api/series/creatorId/:" + proj.user.id, // La ressource ciblée
+			type: "POST",
+			success: function (data) {
+				initPH(data);
+			},
+			error: function (e) {
+				alert("impossible de récupérer de ce connecter");
+			}
+		});
+	}
+}
+
+function recupExo(){
+	let repUn = $("input#response1")[0].value,
+		repDeux = $("input#response2")[0].value,
+		repTrois = $("input#response3")[0].value,
+		repQuatre = $("input#response4")[0].value;
+
+	return{
+		kind: "QCM",
+		question:"yolo",
+		responseList : [repUn,repDeux,repTrois,repQuatre],
+		response: repUn,
+		serieId: proj.serie.id
+	}
 }

@@ -19,8 +19,8 @@ function connexion(){
 		contentType: "application/json",
 		data: JSON.stringify(data),
 		success: function (data) {
-			proj.user.id = data[0]._id;
-			proj.user.status = data[0].status;
+			proj.user.id = data.user._id;
+			proj.user.status = data.user.status;
 			$("header").load("includes/Professor/headerProf.html", () => {
 				initPH(data);
 			});
@@ -39,31 +39,7 @@ function initPH(data){
 	if (proj.user.status === "0")
 		$("#navbarsExampleDefault li.create").css("display", "none");
 
-	//TODO appel au web service pour récupére les séries
-	//TODO V2 pas besoin si ramener par le login
-	let liste = [
-		{
-			name: "liste1",
-			matiere: "math",
-			id: 1
-		},
-		{
-			name: "liste2",
-			matiere: "info",
-			id: 2
-		},
-		{
-			name: "liste3",
-			matiere: "math",
-			id: 3
-		},
-		{
-			name: "liste4",
-			matiere: "math",
-			id: 4
-		}
-	];
-	afficherSerie(data.liste || liste);
+	afficherSerie(data.serie);
 };
 
 function afficherSerie(listSerie){
@@ -74,18 +50,18 @@ function afficherSerie(listSerie){
 	$("#main").append(mainDiv);
 
 	_.forEach(listSerie, (serie) => {
-		if (_.findIndex(tabMatiere, function(o) { return o == serie.matiere; }) < 0){
+		if (_.findIndex(tabMatiere, function(o) { return o == serie.topic; }) < 0){
 			let divMat = $("<div class='menu'>"),
-				titleMat = $("<p class='title'>").text(serie.matiere),
-				listeSerie = $("<ul class='liste list-group'>").addClass(serie.matiere);
+				titleMat = $("<p class='title'>").text(serie.topic),
+				listeSerie = $("<ul class='liste list-group'>").addClass(serie.topic);
 
 			divMat.append(titleMat);
 			mainDiv.append(divMat).append(listeSerie);
 
-			tabMatiere.push(serie.matiere);
+			tabMatiere.push(serie.topic);
 
 			divMat.on("click", (e) => {
-				let list = $("ul." + serie.matiere);
+				let list = $("ul." + serie.topic);
 				if(list.css("display") === "flex")
 					list.css("display", "none");
 				else
@@ -93,11 +69,11 @@ function afficherSerie(listSerie){
 			})
 		}
 
-		let divSerie = $("<li class='list-group-item' id='" + serie.id + "'>"),
+		let divSerie = $("<li class='list-group-item' id='" + serie._id + "'>"),
 			titleSerie = $("<p class='title'>").text(serie.name),
 			btnModif = $("<button type='button' class='button btn btn-info'>").text("modif");
 
-		$("ul." + serie.matiere).append(divSerie);
+		$("ul." + serie.topic).append(divSerie);
 		divSerie.append(titleSerie);
 		if (proj.user.status !== "0"){
 			let btnSupr = $("<button type='button' class='button btn btn-danger'>").text("suppr");
