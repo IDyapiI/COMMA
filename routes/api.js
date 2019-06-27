@@ -68,7 +68,7 @@ router
     .post(exercise.create);
 
 router
-    .route("/exercices/:id")
+    .route("/exercises/:id")
     .put(exercise.updateOne)
     .get(exercise.readOne)
     .delete(exercise.deleteOne);
