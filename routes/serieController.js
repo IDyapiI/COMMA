@@ -66,9 +66,58 @@ function list(req, res) {
     }
   });
 }
+
+function readByGroupId(req, res) {
+  Serie.findOne({ groupId: req.params.groupId }, (err, serie) => {
+    if (err) {
+      console.log("finding problem: %s", err.message);
+      res.json({});
+    } else {
+      res.json(serie);
+      res.status(200).end();
+    }
+  });
+}
+
+function readByCreatorId(req, res) {
+  Serie.findOne({ creator: req.params.readByCreatorId }, (err, serie) => {
+    if (err) {
+      console.log("finding problem: %s", err.message);
+      res.json({});
+    } else {
+      res.json(serie);
+      res.status(200).end();
+    }
+  });
+}
+function deleteOne(id) {
+  D.functions('Entering to deleteOne');
+    Serie.findById(id, (err, serie) => {
+      if (err) {
+        res.json(err);
+        res.status(500).end();
+      } else if (serie) {
+        serie.remove((error) => {
+          if (error) {
+            res.json(err);
+            res.status(500).end();
+          } else {
+            res.json('deleted.');
+            res.status(200).end();
+          }
+        });
+      } else {
+        res.json('user not found');
+        res.status(400).end();
+      }
+    });
+}
 module.exports = {
   create,
   readOne,
   updateOne,
-  list
+  list,
+  readByGroupId,
+  readByCreatorId,
+  deleteOne,
 };
