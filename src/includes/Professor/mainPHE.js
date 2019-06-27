@@ -9,7 +9,7 @@ function supprSerie(data) {
 		url : "http://localhost:3000/api/series/" + data.id, // La ressource ciblée
 		type : "DELETE",
 		success: function (data) {
-			initPHE(data);
+			initPH(data);
 		},
 		error: function (e) {
 			alert("impossible de récupérer les series");
@@ -63,7 +63,6 @@ function popupCreateSerie (){
 			},
 			error: function (e) {
 				alert("impossible de récupérer les series");
-				creationSerie();
 			}
 		});
 	}
