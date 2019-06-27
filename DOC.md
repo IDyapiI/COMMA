@@ -49,7 +49,6 @@ dans le body email, password
 => http://localhost:3000/api/series/
 
 dans le body:
-
   * topic
   * name 
   * level 
@@ -85,5 +84,99 @@ dans le body:
 
 
 ### Read One by groupId 
-=> http://localhost:3000/api/ series/groupId/:groupId
+=> http://localhost:3000/api/series/groupId/:groupId
+
+
+## Exercises
+
+
+### Create (méthode POST)
+=> http://localhost:3000/api/exercises/
+
+dans le body:
+  * kind
+  * question
+  * listResponse
+  * response
+  
+### Read One (méthode GET)
+=> http://localhost:3000/api/exercises/:id
+
+en param l'id de l'exercice à récupérer
+
+### Update One (méthode PUT)
+=> http://localhost:3000/api/exercises/:id
+
+en param l'id de l'exercice à modifier
+dans le body:
+  * kind
+  * question
+  * listResponse
+  * response
+  
+###  Delete One (méthode DELETE)
+=> http://localhost:3000/api/exercises/:id
+
+en param l'id de l'exercice à supprimer
+
+
+## Groups
+
+
+### Create (méthode GET)
+=> http://localhost:3000/api/groups/
+
+dans le body:
+  * name
+  * level
+
+### Read One (méthode POST)
+=> http://localhost:3000/api/groups/:id
+
+en param l'id du groupe à récupérer
+
+### Update One (méthode PUT)
+=> http://localhost:3000/api/groups/:id
+
+en param l'id du groupe à modifier
+dans le body:
+  * name
+  * level
+  
+### Delete One (méthode DELETE)
+=> http://localhost:3000/api/groups/:id
+
+en param l'id de l'exercice à supprimer
+
+
+## RESULTS
+
+### Create (méthode GET)
+=> http://localhost:3000/api/results/
+
+dans le body:
+  * grade
+  * groupId
+  * userId
+
+### Read One (méthode POST)
+=> http://localhost:3000/api/results/:id
+
+en param l'id du résultat à récupérer
+
+### Update One (méthode PUT)
+=> http://localhost:3000/api/results/:id
+
+en param l'id du résultat à récupérer
+dans le body:
+  * grade
+  
+
+
+
+
+
+
+ 
+
 
