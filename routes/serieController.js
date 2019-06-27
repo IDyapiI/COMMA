@@ -82,7 +82,7 @@ function readByGroupId(req, res) {
 }
 
 function readByCreatorId(req, res) {
-  Serie.findOne({ creator: mongoose.Schema.Types.ObjectId(req.params.creatorId) }, (err, serie) => {
+  Serie.find({ creator: req.params.creatorId }, (err, serie) => {
     if (err) {
       console.log("finding problem: %s", err.message);
       res.json({});
