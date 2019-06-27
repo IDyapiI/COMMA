@@ -21,7 +21,7 @@ function connexion(){
 		success: function (data) {
 			proj.user.id = data[0]._id;
 			proj.user.status = data[0].status;
-			$('header').load('includes/Professor/headerProf.html', () => {
+			$("header").load("includes/Professor/headerProf.html", () => {
 				initPHE(data);
 			});
 		},

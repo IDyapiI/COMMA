@@ -14,18 +14,6 @@ function initPHE(data){
 
 	//TODO appel au web service pour récupére les séries
 	//TODO V2 pas besoin si ramener par le login
-	/*  $.ajax({
-			url : "http://localhost:3000/api/series/", // La ressource ciblée
-			type : "GET", // Le type de la requête HTTP.
-			success: function (data) {
-				var liste = data;
-			},
-			error: function () {
-				alert("impossible de récupérer les series");
-			}
-
-		});*/
-
 	let liste = [
 		{
 			name: "liste1",
@@ -145,4 +133,8 @@ function creationSerie(){
 	let mainDiv = $("<div id='bloc'>");
 
 	$("#main").append(mainDiv);
+	if (proj.user.status !== "0")
+		mainDiv.load("includes/Student/readSeries.html");
+	else
+		mainDiv.load("includes/Professor/createSeries.html");
 }
