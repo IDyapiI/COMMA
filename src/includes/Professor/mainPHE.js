@@ -20,7 +20,7 @@ function supprSerie(id) {
 		}
 	});
 }
-//TODO virer les auto complete
+
 function popupCreateSerie (){
 	let obj = {
 		id: "modalSerie",
@@ -34,7 +34,7 @@ function popupCreateSerie (){
 		let form = $("<form id='form_creationSerie'/>"),
 			partie1 = $("<div class='form-group'><label for='exampleInputNom'>Nom</label><input type='text' class='form-control' id='exampleInputNom' aria-describedby='nameHelp' placeholder='Enter name'><small id='nameHelp' class='form-text text-muted'>Le nom que porteras la série.</small></div>"),
 			partie2 = $("<div class='form-group'><label for='exampleFormControlSelect1'>Selectionner une matiere</label><select class='form-control' id='exampleFormControlSelect1'><option>Mathématique</option><option>Histoire-Géo</option><option>Physique</option><option>SVT</option><option>Course au large</option><option>Informatique</option></select></div>"),
-			partie3 = $("<div class='form-group'><label for='exampleFormControlSelect2'>Niveau</label><select class='form-control' id='exampleFormControlSelect2'><option>Première</option><option>Terminal</option><option>Bac+2</option><option>Bac+3</option><option>Bac+5</option></select></div>"),
+			partie3 = $("<div class='form-group'><label for='exampleFormControlSelect2'>Niveau</label><select class='form-control' id='exampleFormControlSelect2'><option>Première</option><option>Terminale</option><option>Bac+2</option><option>Bac+3</option><option>Bac+5</option></select></div>"),
 			partie4 = $("<div class='form-group'><label for='exampleFormControlSelect3'>Groupe</label></div>");
 			partie5 = $("<select multiple class='form-control' id='exampleFormControlSelect3'></select>");
 
