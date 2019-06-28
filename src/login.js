@@ -21,6 +21,7 @@ function connexion(){
 		success: function (data) {
 			proj.user.id = data.user._id;
 			proj.user.status = data.user.status;
+			proj.user.group = data.user.groupId;
 			$("header").load("includes/Professor/headerProf.html", () => {
 				initPH(data);
 			});
@@ -91,12 +92,15 @@ function afficherSerie(listSerie){
 					success: function (data) {
 						proj.serie = {};
 						proj.serie.id = data._id;
+						proj.serie.finish = false;
 						proj.serie.exo = data.exercises || [];
-						proj.serie.actu = 0;
+						proj.serie.nbExo = proj.serie.exo.length || 0;
+						proj.serie.exoActu = 0;
 						if (proj.user.status === "1"){
-							creationSerie(proj.serie.exo[proj.serie.actu]);
+							//TODO essayer de gérer la modif entièrement en front
+							creationSerie(proj.serie.exo[proj.serie.exoActu]);
 						} else{
-							startSerie(proj.serie.exo[proj.serie.actu]);
+							startSerie(proj.serie.exo[proj.serie.exoActu]);
 						}
 					},
 					error: function (e) {

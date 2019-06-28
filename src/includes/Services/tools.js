@@ -31,6 +31,10 @@ function createModal(obj){
 	});
 }
 
+/**
+ *
+ * @param obj
+ */
 function createAlert(obj){
 	let alert = $("<div class='alert' role='alert' style='margin: 20px;'>" + obj.text + "</div>");
 	switch(obj.type){
