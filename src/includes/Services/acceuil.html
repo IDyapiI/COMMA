@@ -1,0 +1,103 @@
+<header id="header">
+
+    <div style="background-image: url('../ressources/home.png'); height: 550px; width: 100%">
+        <h1 style="font-family: 'Freestyle Script'; font-size: 60px; padding-top: 50px; padding-left: 200px; padding-right: 900px; text-align: justify">
+            Bienvenue sur Etudia, plateforme pédagogique permettant aux eleves de college un apprentissage personnalisé.
+        </h1>
+        <div style="padding-left: 200px">
+            <button type="button" class="btn btn-primary justify-content-md-center" data-toggle="modal" data-target="#exampleModal">
+                Connexion
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formulaireConnexion" method="POST" >
+                        <div class="form-group">
+                            <label></label>
+                            <input type="email" class="form-control fadeIn first email" autocomplete="current-email" placeholder="Email">
+
+                            <label></label>
+                            <input type="password" class="form-control fadeIn second password" autocomplete="current-password" placeholder="Password">
+                        </div>
+                    </form>
+                    <button type="submit" class="btn btn-primary fadeIn third" href="includes/Professor/headerProf.html" onclick="connexion()" data-dismiss="modal">Valider</button>
+                </div>
+                <div class="modal-footer">
+                    <a class="underlineHover" href="includes/Professor/headerProf.html">Pas encore inscrit ?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<div id="main">
+    <div id="bloc">
+        <section class="page-section" id="services" style="background-color: #eee5e3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading text-uppercase">Services</h2>
+                        <h3 class="section-subheading text-muted"></h3>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <h4>Convivial</h4>
+                        <p class="text-muted">Une plateforme intuitive permettant aux élèves et enseignant de travailler avec efficacité.</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h4>Personnalisé</h4>
+                        <p class="text-muted">Un parcours sur mesure qui assure aux élèves uniquement les exercices créés par leur professeur. </p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h4>Sécurisé</h4>
+                        <p class="text-muted">Les professeurs sont informés des résultats de leurs élèves et seulement eux.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials text-center bg-light">
+            <div class="container" style="padding-bottom: 30px">
+                <h2 class="mb-5">Tout le monde en parle</h2>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                            <img class="img-fluid rounded-circle mb-3" src="img/testimonials-1.jpg" alt="">
+                            <h5>Margaret E.</h5>
+                            <p class="font-weight-light mb-0">" Mes élèves SEGPA paraissent vraiment plus intelligents "</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                            <img class="img-fluid rounded-circle mb-3" src="img/testimonials-2.jpg" alt="">
+                            <h5>Fred S.</h5>
+                            <p class="font-weight-light mb-0">" On va pas se le cacher, Etudia c'est quand même le turfu pour mes élèves "</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                            <img class="img-fluid rounded-circle mb-3" src="img/testimonials-3.jpg" alt="">
+                            <h5>Sarah W.</h5>
+                            <p class="font-weight-light mb-0">" Grâce à Etudia, j'ai retrouvé goût à la vie "</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

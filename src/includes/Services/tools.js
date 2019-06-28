@@ -40,6 +40,9 @@ function createAlert(obj){
 	}
 
 	obj.content.append(alert);
+	setTimeout(function(){
+		alert.remove();
+	}, 2000);
 	alert.on("click", function(e){
 		this.remove();
 	})

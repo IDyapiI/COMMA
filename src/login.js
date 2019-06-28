@@ -70,8 +70,7 @@ function afficherSerie(listSerie){
 		}
 
 		let divSerie = $("<li class='list-group-item' id='" + serie._id + "'>"),
-			titleSerie = $("<p class='title'>").text(serie.name),
-			btnModif = $("<button type='button' class='button btn btn-info'>").text(proj.user.status === "1" ? "modif" : "Commencer");
+			titleSerie = $("<p class='title'>").text(serie.name);
 
 		$("ul." + serie.topic).append(divSerie);
 		divSerie.append(titleSerie);
@@ -82,27 +81,33 @@ function afficherSerie(listSerie){
 			btnSupr.on("click", (e) => {
 				supprSerie(serie._id);
 			});
-		}
-		divSerie.append(btnModif);
-		btnModif.on("click", (e) => {
-			$.ajax({
-				url: "http://localhost:3000/api/series/" + serie._id, // La ressource ciblée
-				type: "GET",
-				success: function (data) {
-					proj.serie = {};
-					proj.serie.id = data._id;
-					proj.serie.exo = data.exercises || [];
-					proj.serie.actu = 0;
-					if (proj.user.status === "1"){
-						creationSerie(proj.serie.exo[proj.serie.actu]);
-					} else{
-
+		}else{
+			let btnModif = $("<button type='button' class='button btn btn-info'>").text("Commencer");
+			divSerie.append(btnModif);
+			btnModif.on("click", (e) => {
+				$.ajax({
+					url: "http://localhost:3000/api/series/" + serie._id, // La ressource ciblée
+					type: "GET",
+					success: function (data) {
+						proj.serie = {};
+						proj.serie.id = data._id;
+						proj.serie.exo = data.exercises || [];
+						proj.serie.actu = 0;
+						if (proj.user.status === "1"){
+							creationSerie(proj.serie.exo[proj.serie.actu]);
+						} else{
+							startSerie(proj.serie.exo[proj.serie.actu]);
+						}
+					},
+					error: function (e) {
+						alert("impossible de récupérer la série");
 					}
-				},
-				error: function (e) {
-					alert("impossible de récupérer la série");
-				}
+				});
 			});
-		});
+		}
 	});
+}
+
+function deconnexion() {
+	$("body").load("includes/Services/acceuil.html");
 }
