@@ -61,7 +61,7 @@ function updateOne(req, res) {
 }
 
 function login(req, res) {
-  User.find({email: req.body.email}, (err, user) => {
+  User.find({ email: req.body.email }, (err, user) => {
     if (err) {
       console.log(`Error finding user email at login: ${err}`);
       res.status(400).end();
@@ -78,17 +78,32 @@ function login(req, res) {
         } else if (!result) {
           console.log("password don't match");
           res.status(401).end();
-        } else {
-          Serie.find({creator: user._id}, (err, serie) =>{
-            if(err){
+        } else if (user[0].status == "1") {
+          
+          Serie.find({ creator: user._id }, (err, serie) => {
+            if (err) {
               res.status(400).end();
-            }else{
-              user.password = undefined; 
+            } else {
+              user.password = undefined;
               user = user[0]
-              res.json({user,serie});
+              res.json({ user, serie });
               
             }
           })
+        }else if ( user[0].status == "0"){
+          Serie.find({groupId : user[0].groupId}, (err,serie)=> {
+            if (err){
+              console.log(err)
+              res.status(400).end();
+            }else{
+              user.password = undefined;
+              user = user[0]
+              res.json({ user, serie });
+            }
+          })
+        }else {
+          console.log("error")
+          res.status(400).end();
         }
       });
     }
@@ -96,7 +111,7 @@ function login(req, res) {
 }
 
 function list(req, res) {
-  User.find({},(err, user) => {
+  User.find({}, (err, user) => {
     console.log(user)
     if (err) {
       console.log(err);
