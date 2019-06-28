@@ -70,7 +70,7 @@ function list(req, res) {
 }
 
 function readByGroupId(req, res) {
-  Serie.findOne({ groupId: req.params.groupId }, (err, serie) => {
+  Serie.find({ groupId: req.params.groupId }, (err, serie) => {
     if (err) {
       console.log("finding problem: %s", err.message);
       res.json({});
