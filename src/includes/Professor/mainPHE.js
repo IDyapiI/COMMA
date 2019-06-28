@@ -117,9 +117,9 @@ function exoSuivant(){
 
 	if (!data)
 		return;
-	if (_.get(proj, 'serie.exo') && _.get(proj, 'serie.actu') >= 0 && proj.serie.exo[proj.serie.actu]){
+	if (_.get(proj, 'serie.exo') && _.get(proj, 'serie.actu') >= 0 && proj.serie.exo[proj.serie.exoActu]){
 		$.ajax({
-			url: "http://localhost:3000/api/exercises/" + proj.serie.exo[proj.serie.actu]._id, // La ressource ciblée
+			url: "http://localhost:3000/api/exercises/" + proj.serie.exo[proj.serie.exoActu]._id, // La ressource ciblée
 			type: "PUT",
 			contentType: "application/json",
 			data: JSON.stringify(data),
@@ -130,8 +130,8 @@ function exoSuivant(){
 					type: "success"
 				};
 				createAlert(obj);
-				proj.serie.actu++;
-				creationSerie(proj.serie.exo[proj.serie.actu]);
+				proj.serie.exoActu++;
+				creationSerie(proj.serie.exo[proj.serie.exoActu]);
 			},
 			error: function (e) {
 				console.log("error");
