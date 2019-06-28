@@ -96,7 +96,7 @@ function afficherSerie(listSerie){
 					if (proj.user.status === "1"){
 						creationSerie(proj.serie.exo[proj.serie.actu]);
 					} else{
-
+						startSerie(proj.serie.exo[proj.serie.actu]);
 					}
 				},
 				error: function (e) {
