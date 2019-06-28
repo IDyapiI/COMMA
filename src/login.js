@@ -109,5 +109,5 @@ function afficherSerie(listSerie){
 }
 
 function deconnexion() {
-	$("html").parent().load("index.html");
+	$("body").load("includes/Services/acceuil.html");
 }
