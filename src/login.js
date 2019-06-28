@@ -75,8 +75,8 @@ function afficherSerie(listSerie){
 
 		$("ul." + serie.topic).append(divSerie);
 		divSerie.append(titleSerie);
-		if (proj.user.status !== "0"){
-			let btnSupr = $("<button type='button' class='button btn btn-danger'>").text("suppr");
+		if (proj.user.status !== "0") {
+			let btnSupr = $("<button type='button' class='button btn btn-danger'>").text("Suppr");
 			divSerie.append(btnSupr);
 
 			btnSupr.on("click", (e) => {
